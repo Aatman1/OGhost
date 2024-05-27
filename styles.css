@@ -29,6 +29,7 @@ a:hover {
     text-decoration: underline;
     transition: font-weight 0.2s ease, text-decoration 0.2s ease;
 }
+
 .login-container {
     max-width: 500px;
     justify-content: left;
@@ -136,6 +137,11 @@ h3 {
     border-width: 2px;
     border-color: #563bff;
     border-radius: 5px;
+}
+
+.phone-container:hover {
+    border-color: #2b4aff;
+    transition: border-color 0.5s ease;
 }
 
 .input-style {
