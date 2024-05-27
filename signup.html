@@ -294,6 +294,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const contactNum = "(" + countryCode + ")" + phone;
 
             // Log form data to console
             console.log('Name:', name);
@@ -302,6 +303,7 @@
             console.log('Email:', email);
             console.log('Password:', password);
             console.log('Confirm Password:', confirmPassword);
+            console.log('Contact Number', contactNum);
 
             // Here you can also handle form submission, e.g., sending data to a server
             if (password !== confirmPassword) {
