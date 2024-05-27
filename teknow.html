@@ -4,32 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
-    <link rel="stylesheet" href="styles2.css">
+    <link rel="icon" type="image/png" href="ghost_L.png">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .phone-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .phone-container select, .phone-container input {
-            margin-right: 5px;
-        }
-
-        .phone-container select {
-            width: auto;
-        }
-    </style>
 </head>
 <body>
-    <div class="graphic-container">
-        <img class="graphic" src="https://testapp.offerghosting.com/assets/Sumeru_Digital_Offer%20ghosting-5aabab4c.gif" alt="Login GIF">
-    </div> 
+    <div class="background-element" id="background-element"></div>
+    <img class="logo" src="OG_logo.png" alt="Logo">
     <div class="login-container">
         <div class="login-form">
             <div class="header-with-image">
-                <h1>Create Account</h1>
-                <img src="https://testapp.offerghosting.com/assets/browsericon-afc886db.PNG" alt="Image Description" class="header-image">
+                <h1>Create an Account</h1>
             </div>
             <div class="social-login">
                 <button class="social-btn google"><i class="fab fa-google"></i></button>
@@ -38,9 +23,9 @@
             </div>
             <h3><span>or</span></h3>
             <form>
-                <label for="countryCode">Phone Number</label>
                 <div class="phone-container">
                     <select class="Nation-Code" id="countryCode" name="countryCode" required>
+                        <option value="" disabled selected>Select Country</option>
                     </select>
                     
                     <script>
@@ -48,6 +33,7 @@
                     
                         // Array of objects containing country code and country name
                         const countries = [
+                            { code: "+91", name: "India" },
                             { code: "+93", name: "Afghanistan" },
                             { code: "+355", name: "Albania" },
                             { code: "+213", name: "Algeria" },
@@ -56,7 +42,6 @@
                             { code: "+54", name: "Argentina" },
                             { code: "+297", name: "Aruba" },
                             { code: "+374", name: "Armenia" },
-                            { code: "+297", name: "Aruba" },
                             { code: "+61", name: "Australia" },
                             { code: "+43", name: "Austria" },
                             { code: "+994", name: "Azerbaijan" },
@@ -131,63 +116,142 @@
                             { code: "+852", name: "Hong Kong" },
                             { code: "+36", name: "Hungary" },
                             { code: "+354", name: "Iceland" },
-                            { code: "+91", name: "India" },
                             { code: "+62", name: "Indonesia" },
                             { code: "+98", name: "Iran" },
                             { code: "+964", name: "Iraq" },
                             { code: "+353", name: "Ireland" },
                             { code: "+972", name: "Israel" },
                             { code: "+39", name: "Italy" },
-                            
-                            ];
-                            
+                            { code: "+81", name: "Japan" },
+                            { code: "+962", name: "Jordan" },
+                            { code: "+7", name: "Kazakhstan" },
+                            { code: "+254", name: "Kenya" },
+                            { code: "+686", name: "Kiribati" },
+                            { code: "+965", name: "Kuwait" },
+                            { code: "+996", name: "Kyrgyzstan" },
+                            { code: "+856", name: "Laos" },
+                            { code: "+371", name: "Latvia" },
+                            { code: "+961", name: "Lebanon" },
+                            { code: "+266", name: "Lesotho" },
+                            { code: "+231", name: "Liberia" },
+                            { code: "+218", name: "Libya" },
+                            { code: "+423", name: "Liechtenstein" },
+                            { code: "+370", name: "Lithuania" },
+                            { code: "+352", name: "Luxembourg" },
+                            { code: "+853", name: "Macau" },
+                            { code: "+389", name: "North Macedonia" },
+                            { code: "+261", name: "Madagascar" },
+                            { code: "+265", name: "Malawi" },
+                            { code: "+60", name: "Malaysia" },
+                            { code: "+960", name: "Maldives" },
+                            { code: "+223", name: "Mali" },
+                            { code: "+356", name: "Malta" },
+                            { code: "+692", name: "Marshall Islands" },
+                            { code: "+596", name: "Martinique" },
+                            { code: "+222", name: "Mauritania" },
+                            { code: "+230", name: "Mauritius" },
+                            { code: "+52", name: "Mexico" },
+                            { code: "+691", name: "Micronesia" },
+                            { code: "+373", name: "Moldova" },
+                            { code: "+377", name: "Monaco" },
+                            { code: "+976", name: "Mongolia" },
+                            { code: "+382", name: "Montenegro" },
+                            { code: "+212", name: "Morocco" },
+                            { code: "+258", name: "Mozambique" },
+                            { code: "+95", name: "Myanmar" },
+                            { code: "+264", name: "Namibia" },
+                            { code: "+674", name: "Nauru" },
+                            { code: "+977", name: "Nepal" },
+                            { code: "+31", name: "Netherlands" },
+                            { code: "+687", name: "New Caledonia" },
+                            { code: "+64", name: "New Zealand" },
+                            { code: "+505", name: "Nicaragua" },
+                            { code: "+227", name: "Niger" },
+                            { code: "+234", name: "Nigeria" },
+                            { code: "+683", name: "Niue" },
+                            { code: "+850", name: "North Korea" },
+                            { code: "+47", name: "Norway" },
+                            { code: "+968", name: "Oman" },
+                            { code: "+92", name: "Pakistan" },
+                            { code: "+680", name: "Palau" },
+                            { code: "+970", name: "Palestine" },
+                            { code: "+507", name: "Panama" },
+                            { code: "+675", name: "Papua New Guinea" },
+                            { code: "+595", name: "Paraguay" },
+                            { code: "+51", name: "Peru" },
+                            { code: "+63", name: "Philippines" },
+                            { code: "+48", name: "Poland" },
+                            { code: "+351", name: "Portugal" },
+                            { code: "+974", name: "Qatar" },
+                            { code: "+40", name: "Romania" },
+                            { code: "+7", name: "Russia" },
+                            { code: "+250", name: "Rwanda" },
+                            { code: "+685", name: "Samoa" },
+                            { code: "+378", name: "San Marino" },
+                            { code: "+239", name: "Sao Tome and Principe" },
+                            { code: "+966", name: "Saudi Arabia" },
+                            { code: "+221", name: "Senegal" },
+                            { code: "+381", name: "Serbia" },
+                            { code: "+248", name: "Seychelles" },
+                            { code: "+232", name: "Sierra Leone" },
+                            { code: "+65", name: "Singapore" },
+                            { code: "+421", name: "Slovakia" },
+                            { code: "+386", name: "Slovenia" },
+                            { code: "+677", name: "Solomon Islands" },
+                            { code: "+252", name: "Somalia" },
+                            { code: "+27", name: "South Africa" },
+                            { code: "+82", name: "South Korea" },
+                            { code: "+34", name: "Spain" },
+                            { code: "+94", name: "Sri Lanka" },
+                            { code: "+249", name: "Sudan" },
+                            { code: "+597", name: "Suriname" },
+                            { code: "+268", name: "Swaziland" },
+                            { code: "+46", name: "Sweden" },
+                            { code: "+41", name: "Switzerland" },
+                            { code: "+963", name: "Syria" },
+                            { code: "+886", name: "Taiwan" },
+                            { code: "+992", name: "Tajikistan" },
+                            { code: "+255", name: "Tanzania" },
+                            { code: "+66", name: "Thailand" },
+                            { code: "+228", name: "Togo" },
+                            { code: "+676", name: "Tonga" },
+                            { code: "+216", name: "Tunisia" },
+                            { code: "+90", name: "Turkey" },
+                            { code: "+993", name: "Turkmenistan" },
+                            { code: "+688", name: "Tuvalu" },
+                            { code: "+256", name: "Uganda" },
+                            { code: "+380", name: "Ukraine" },
+                            { code: "+971", name: "United Arab Emirates" },
+                            { code: "+44", name: "United Kingdom" },
+                            { code: "+1", name: "United States" },
+                            { code: "+598", name: "Uruguay" },
+                            { code: "+998", name: "Uzbekistan" },
+                            { code: "+678", name: "Vanuatu" },
+                            { code: "+58", name: "Venezuela" },
+                            { code: "+84", name: "Vietnam" },
+                            { code: "+681", name: "Wallis and Futuna" },
+                            { code: "+967", name: "Yemen" },
+                            { code: "+260", name: "Zambia" },
+                            { code: "+263", name: "Zimbabwe" },
+                        ];
 
-                            // Loop through countries array and create options
-                            countries.forEach(country => {
-                                const option = document.createElement('option');
-                                option.value = country.code;
-                                option.textContent = `${country.code} ${country.name}`;
-                                CodeSelect.appendChild(option);
-                            });
-
-                            // Update displayed text when an option is selected
-                            CodeSelect.addEventListener('change', function() {
-                                const selectedOption = this.options[this.selectedIndex];
-                                if (selectedOption) {
-                                    // Display only the selected option temporarily
-                                    selectedOption.textContent = selectedOption.value;
-                                    // Revert to displaying both country and code for other options
-                                    for (let option of this.options) {
-                                        if (option !== selectedOption) {
-                                            option.textContent = `${option.value} ${option.textContent.split(' ').slice(1).join(' ')}`;
-                                        }
-                                    }
-                                }
-                            });
-
-    // Revert to displaying both country and code for all options when the dropdown loses focus
-    CodeSelect.addEventListener('blur', function() {
-        for (let option of this.options) {
-            option.textContent = `${option.value} ${option.textContent.split(' ').slice(1).join(' ')}`;
-        }
-    });
+                        // Append each country code to the select element
+                        countries.forEach(country => {
+                            const option = document.createElement('option');
+                            option.value = country.code;
+                            option.textContent = `${country.name} (${country.code})`;
+                            CodeSelect.appendChild(option);
+                        });
                     </script>
                     
-                    <input type="tel" id="tele" name="tele" required>
+                    <input class="phone-number" type="tel" id="phone-number" name="phoneNumber" placeholder="Phone Number" required>
                 </div>
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" required>
+                
+                <input type="email" id="email" name="email" placeholder="example@mail.org" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
                 <button type="submit" class="sign-in-btn">CREATE ACCOUNT</button>
-            </form>
-            <div class="agree-text">
-                <p>By accepting to Register on our platform, you agree that you have read and accepted our <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a>, 
-                    <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> and <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a></p>
-            </div>
-            <div class="create-account"> 
-                <p>Already have an account? <a href="signin.html">Sign In</a></p>
-            </div>
         </div>
     </div>
-    
 </body>
 </html>
