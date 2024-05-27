@@ -11,6 +11,28 @@ body {
     place-content: center;
     overflow: hidden;
   }
+
+  .input-style {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.phone-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-country-code {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
   
 .logo {
     position: absolute;

@@ -23,7 +23,7 @@
                 <button class="social-btn microsoft"><i class="fab fa-microsoft"></i></button>
             </div>
             <h3><span>or</span></h3>
-            <form>
+            <form id="create-account-form">
                 <input type="text" id="name" name="Name" placeholder="Full Name" required>
                 <div class="phone-container">
                     <select class="Nation-Code" id="countryCode" name="countryCode" required>
@@ -34,6 +34,7 @@
                     <script>
                         const CodeSelect = document.getElementById('countryCode');
                         const hiddenCountryCode = document.getElementById('hiddenCountryCode');
+                        const selectedCountryCode = document.getElementById('selectedCountryCode');
 
                         // Array of objects containing country code and country name
                         const countries = [
@@ -151,6 +152,7 @@
                             { code: "+223", name: "Mali" },
                             { code: "+356", name: "Malta" },
                             { code: "+692", name: "Marshall Islands" },
+                            { code: "+596", name: "Martinique" },
                             { code: "+222", name: "Mauritania" },
                             { code: "+230", name: "Mauritius" },
                             { code: "+262", name: "Mayotte" },
@@ -160,6 +162,7 @@
                             { code: "+377", name: "Monaco" },
                             { code: "+976", name: "Mongolia" },
                             { code: "+382", name: "Montenegro" },
+                            { code: "+1664", name: "Montserrat" },
                             { code: "+212", name: "Morocco" },
                             { code: "+258", name: "Mozambique" },
                             { code: "+95", name: "Myanmar" },
@@ -174,6 +177,7 @@
                             { code: "+234", name: "Nigeria" },
                             { code: "+683", name: "Niue" },
                             { code: "+850", name: "North Korea" },
+                            { code: "+1670", name: "Northern Mariana Islands" },
                             { code: "+47", name: "Norway" },
                             { code: "+968", name: "Oman" },
                             { code: "+92", name: "Pakistan" },
@@ -218,8 +222,7 @@
                             { code: "+94", name: "Sri Lanka" },
                             { code: "+249", name: "Sudan" },
                             { code: "+597", name: "Suriname" },
-                            { code: "+47", name: "Svalbard and Jan Mayen" },
-                            { code: "+268", name: "Eswatini" },
+                            { code: "+268", name: "Swaziland" },
                             { code: "+46", name: "Sweden" },
                             { code: "+41", name: "Switzerland" },
                             { code: "+963", name: "Syria" },
@@ -246,70 +249,67 @@
                             { code: "+678", name: "Vanuatu" },
                             { code: "+58", name: "Venezuela" },
                             { code: "+84", name: "Vietnam" },
-                            { code: "+1284", name: "British Virgin Islands" },
-                            { code: "+1340", name: "US Virgin Islands" },
                             { code: "+681", name: "Wallis and Futuna" },
-                            { code: "+212", name: "Western Sahara" },
                             { code: "+967", name: "Yemen" },
                             { code: "+260", name: "Zambia" },
                             { code: "+263", name: "Zimbabwe" }
                         ];
 
-
-                            countries.forEach(country => {
-                                const option = document.createElement('option');
-                                option.value = country.code;
-                                option.textContent = `${country.code} ${country.name}`;
-                                CodeSelect.appendChild(option);
-                            });
-                        
-                            // Update the selected country code display when an option is selected
-                            CodeSelect.addEventListener('change', function() {
-                                const selectedOption = this.options[this.selectedIndex];
-                                if (selectedOption) {
-                                    selectedCountryCode.textContent = selectedOption.value;
-                                }
-                            });
-
-                            // Revert to displaying both country code and name for all options when the dropdown loses focus
-                            CodeSelect.addEventListener('blur', function() {
-                                for (let option of this.options) {
-                                    option.textContent = `${option.value} ${option.textContent.split(' ').slice(1).join(' ')}`;
-                                }
-                            });
-
-                            CodeSelect.addEventListener('change', () => {
-                            const selectedOption = CodeSelect.options[CodeSelect.selectedIndex];
-                            hiddenCountryCode.value = selectedOption.value;
-                            CodeSelect.style.display = 'none';
-                            const displayText = document.createElement('div');
-                            displayText.classList.add('selected-code-display');
-                            displayText.textContent = selectedOption.value;
-                            displayText.addEventListener('click', () => {
-                                displayText.remove();
-                                CodeSelect.style.display = 'block';
-                            });
-                            CodeSelect.parentNode.insertBefore(displayText, CodeSelect);
+                        // Populate the select element with options
+                        countries.forEach(country => {
+                            const option = document.createElement('option');
+                            option.value = country.code;
+                            option.textContent = `${country.name} (${country.code})`;
+                            CodeSelect.appendChild(option);
                         });
 
-                            </script>
+                        // Update hidden field with selected country code
+                        CodeSelect.addEventListener('change', () => {
+                            hiddenCountryCode.value = CodeSelect.value;
+                        });
 
-                    <input type="tel" id="tele" name="tele" placeholder="Phone Number" required>
+                    </script>
+                    
+                    <input type="tel" id="phone" name="phone" placeholder="Mobile Number" required>
                 </div>
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
-                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
-                <button type="submit" class="sign-in-btn">CREATE ACCOUNT</button>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit"  class="sign-in-btn">Create Account</button>
+                <div class="agree-text">
+                    <p>By accepting to Register on our platform, you agree that you have read and accepted our <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a>, 
+                        <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> and <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a></p>
+                </div>
             </form>
-            <div class="agree-text">
-                <p>By accepting to Register on our platform, you agree that you have read and accepted our <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a>, 
-                    <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> and <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a></p>
-            </div>
-            <div class="create-account"> 
-                <p>Already have an account? <a href="signin.html">Sign In</a></p>
-            </div>
+            <p class="login-link">Already have an account? <a href="signin.html">Log In</a></p>
         </div>
     </div>
-    
+    <script>
+        // Add event listener for form submission
+        document.getElementById('create-account-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const countryCode = document.getElementById('countryCode').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Log form data to console
+            console.log('Name:', name);
+            console.log('Country Code:', countryCode);
+            console.log('Phone:', phone);
+            console.log('Email:', email);
+            console.log('Password:', password);
+            console.log('Confirm Password:', confirmPassword);
+
+            // Here you can also handle form submission, e.g., sending data to a server
+
+            // For now, just display an alert
+            alert('Form submitted!');
+        });
+    </script>
 </body>
 </html>

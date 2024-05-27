@@ -30,19 +30,19 @@ a:hover {
     transition: font-weight 0.2s ease, text-decoration 0.2s ease;
 }
 .login-container {
+    max-width: 500px;
     justify-content: left;
     background-color: white;
     box-shadow: 10px 10px 5px 4px #0000001a;
-    position: relative  ;
     border-radius: 10px;
     overflow: hidden;
-    display: flex;
-    max-width: 25%;
+    display: inline-flexbox;
+    flex-basis: content;
+    height: fit-content;
 }
 
 .login-form {
     padding: 40px;
-    flex: 1;
 }
 
 .login-form h1 {
@@ -131,6 +131,21 @@ h3 {
 
 .phone-container select {
     width: auto;
+    display: flex;
+    flex-direction: column;
+    border-width: 2px;
+    border-color: #563bff;
+    border-radius: 5px;
+}
+
+.input-style {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .login-form input {
@@ -142,8 +157,8 @@ h3 {
     border-radius: 5px;
 }
 
-.Nation-Code {
-    max-width: 25%;
+.Nation-Code, .selected-country-code {
+    max-width: 35%;
     text-overflow: clip;
     margin: 10px 0;
     padding: 10px;
