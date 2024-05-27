@@ -25,13 +25,14 @@
             <form>
                 <div class="phone-container">
                     <select class="Nation-Code" id="countryCode" name="countryCode" required>
-                        <option value="" disabled selected>Select Country</option>
+                        <option value="" disabled selected>Select your country code</option>
                     </select>
+                    <input type="hidden" id="hiddenCountryCode" name="hiddenCountryCode">
                     
                     <script>
                         const CodeSelect = document.getElementById('countryCode');
-                    
-                        // Array of objects containing country code and country name
+                        const hiddenCountryCode = document.getElementById('hiddenCountryCode');
+
                         const countries = [
                             { code: "+91", name: "India" },
                             { code: "+93", name: "Afghanistan" },
@@ -242,15 +243,28 @@
                             option.textContent = `${country.name} (${country.code})`;
                             CodeSelect.appendChild(option);
                         });
+
+                        CodeSelect.addEventListener('change', () => {
+                            const selectedOption = CodeSelect.options[CodeSelect.selectedIndex];
+                            hiddenCountryCode.value = selectedOption.value;
+                            CodeSelect.style.display = 'none';
+                            const displayText = document.createElement('div');
+                            displayText.classList.add('selected-code-display');
+                            displayText.textContent = selectedOption.value;
+                            displayText.addEventListener('click', () => {
+                                displayText.remove();
+                                CodeSelect.style.display = 'block';
+                            });
+                            CodeSelect.parentNode.insertBefore(displayText, CodeSelect);
+                        });
                     </script>
                     
                     <input class="phone-number" type="tel" id="phone-number" name="phoneNumber" placeholder="Phone Number" required>
                 </div>
-                
-                <input type="email" id="email" name="email" placeholder="example@mail.org" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
-                <button type="submit" class="sign-in-btn">CREATE ACCOUNT</button>
+                <button type="submit" class="sign-in-btn">Create Account</button>
+            </form>
         </div>
     </div>
 </body>

@@ -27,11 +27,14 @@
                 <input type="text" id="name" name="Name" placeholder="Full Name" required>
                 <div class="phone-container">
                     <select class="Nation-Code" id="countryCode" name="countryCode" required>
+                        <option value="" disabled selected>Select Country</option>
                     </select>
+                    <input type="hidden" id="hiddenCountryCode" name="hiddenCountryCode">
                     
                     <script>
                         const CodeSelect = document.getElementById('countryCode');
-                    
+                        const hiddenCountryCode = document.getElementById('hiddenCountryCode');
+
                         // Array of objects containing country code and country name
                         const countries = [
                             { code: "+91", name: "India" },
@@ -274,6 +277,21 @@
                                     option.textContent = `${option.value} ${option.textContent.split(' ').slice(1).join(' ')}`;
                                 }
                             });
+
+                            CodeSelect.addEventListener('change', () => {
+                            const selectedOption = CodeSelect.options[CodeSelect.selectedIndex];
+                            hiddenCountryCode.value = selectedOption.value;
+                            CodeSelect.style.display = 'none';
+                            const displayText = document.createElement('div');
+                            displayText.classList.add('selected-code-display');
+                            displayText.textContent = selectedOption.value;
+                            displayText.addEventListener('click', () => {
+                                displayText.remove();
+                                CodeSelect.style.display = 'block';
+                            });
+                            CodeSelect.parentNode.insertBefore(displayText, CodeSelect);
+                        });
+
                             </script>
 
                     <input type="tel" id="tele" name="tele" placeholder="Phone Number" required>
