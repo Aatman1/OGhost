@@ -7,7 +7,6 @@
     <link rel="icon" type="png/jpg" href="ghost_L.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <body>
     <div class="background-element" id="background-element"></div>
@@ -305,9 +304,13 @@
             console.log('Confirm Password:', confirmPassword);
 
             // Here you can also handle form submission, e.g., sending data to a server
-
-            // For now, just display an alert
-            alert('Form submitted!');
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+            else{
+            alert(`Account created for ${name} with phone ${phone} and email ${email}`);
+            }
         });
     </script>
 </body>
