@@ -1,7 +1,19 @@
+/* // <uniquifier>: Use a unique and descriptive class name */
+/* // <weight>: Use a value from 100 to 900 */
+
+.inter- <uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     display: flex;
-    background-color: whitesmoke;
+    background-color: white;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -38,7 +50,7 @@ a:hover {
     max-width: 500px;
     justify-content: left;
     background-color: white;
-    box-shadow: 10px 10px 5px 4px #0000001a;
+    /* box-shadow: 10px 10px 5px 4px #0000001a; */
     border-radius: 10px;
     overflow: hidden;
     display: inline-flexbox;
@@ -178,20 +190,17 @@ h3 {
 }
 
 .login-header {
+    max-width: 50px; /* Adjust as needed */
+    height: auto;
     display: flex;
     align-items: center;
 }
 
 .login-header h1 {
     margin: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter';
     margin-right: 20px;
     white-space: nowrap;
-}
-
-.login-header {
-    max-width: 50px; /* Adjust as needed */
-    height: auto;
 }
 
 .forgot-password {
@@ -219,8 +228,6 @@ h3 {
 .sign-in-btn:hover {
     background-color: #2b4aff;
     transition: background-color 0.5s ease;
-
-
 }
 
 .agree-text {
