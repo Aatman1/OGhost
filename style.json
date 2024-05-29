@@ -1,0 +1,151 @@
+const converted = {
+  ".inter-login-container": {
+    fontFamily: '"Inter", sans-serif',
+    fontOpticalSizing: "auto",
+    fontWeight: 600,
+    fontStyle: "normal",
+    fontVariationSettings: '"slnt" 0'
+  },
+  body: {
+    fontFamily: "'Inter', sans-serif",
+    display: "flex",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    margin: "0",
+    position: "absolute",
+    inset: "0",
+    placeContent: "center",
+    overflow: "hidden"
+  },
+  h1: { textAlign: "center" },
+  ".logo": { position: "absolute", top: "20px", width: "100px" },
+  a: {
+    fontWeight: "bold",
+    textDecoration: "none",
+    transition: "font-weight 0.2s ease, text-decoration 0.2s ease"
+  },
+  "a:hover": {
+    textDecoration: "underline",
+    transition: "font-weight 0.2s ease, text-decoration 0.2s ease"
+  },
+  ".login-container": {
+    maxWidth: "500px",
+    justifyContent: "left",
+    backgroundColor: "white",
+    borderRadius: "10px",
+    overflow: "hidden",
+    display: "inline-flexbox",
+    flexBasis: "content",
+    height: "fit-content"
+  },
+  ".login-form": { padding: "40px" },
+  ".login-form h1": { marginBottom: "20px" },
+  ".social-login": {
+    display: "flex",
+    justifyContent: "space-between",
+    marginBottom: "20px",
+    padding: "30px"
+  },
+  ".social-btn": {
+    border: "none",
+    borderRadius: "50%",
+    width: "60px",
+    height: "60px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "35px",
+    cursor: "pointer",
+    marginRight: "5px",
+    transition: "font-size 0.2s ease"
+  },
+  ".social-btn:hover": { fontSize: "40px", transition: "font-size 0.2s ease" },
+  ".graphic-container": { width: "40%" },
+  ".graphic": {
+    height: "auto",
+    objectFit: "cover",
+    borderRadius: "9px",
+    boxShadow: "10px 10px 5px 4px #0000001a"
+  },
+  ".social-btn:last-child": { marginRight: "0" },
+  ".social-btn.google": { backgroundColor: "#db4437", color: "white" },
+  ".social-btn.linkedin": { backgroundColor: "#0077b5", color: "white" },
+  ".social-btn.microsoft": { backgroundColor: "#00a4ef", color: "white" },
+  h3: {
+    width: "100%",
+    textAlign: "center",
+    borderBottom: "1px solid #1538ff6e",
+    lineHeight: "0.1em",
+    margin: "10px 0 20px"
+  },
+  "h3 span": { color: "#1538ff6e", background: "white", padding: "0 10px" },
+  ".phone-container": { display: "flex", alignItems: "center" },
+  ".phone-container select, .phone-container input": { marginRight: "5px" },
+  ".phone-container select": {
+    width: "auto",
+    display: "flex",
+    flexDirection: "column",
+    borderWidth: "2px",
+    borderColor: "#563bff",
+    borderRadius: "5px"
+  },
+  ".phone-container:hover": {
+    borderColor: "#2b4aff",
+    transition: "border-color 0.5s ease"
+  },
+  ".input-style": {
+    width: "100%",
+    padding: "10px",
+    margin: "10px 0",
+    boxSizing: "border-box",
+    border: "1px solid #ccc",
+    borderRadius: "4px",
+    fontSize: "16px"
+  },
+  ".login-form input": {
+    width: "calc(100% - 20px)",
+    margin: "10px 0",
+    padding: "10px",
+    borderWidth: "2px",
+    borderColor: "#563bff",
+    borderRadius: "5px"
+  },
+  ".Nation-Code, .selected-country-code": {
+    maxWidth: "35%",
+    textOverflow: "clip",
+    margin: "10px 0",
+    padding: "10px",
+    borderWidth: "2px",
+    borderColor: "#563bff",
+    borderRadius: "5px"
+  },
+  ".login-header": { maxWidth: "100%", height: "auto", alignItems: "center" },
+  ".login-header h1": { justifyContent: "center", whiteSpace: "nowrap" },
+  ".forgot-password": {
+    display: "block",
+    textAlign: "right",
+    marginBottom: "20px",
+    color: "#563bff",
+    textDecoration: "none"
+  },
+  ".sign-in-btn": {
+    width: "100%",
+    padding: "10px",
+    fontFamily: "'Inter', sans-serif",
+    backgroundColor: "#563bff",
+    border: "none",
+    borderRadius: "4px",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "16px",
+    cursor: "pointer",
+    transition: "background-color 0.5s ease"
+  },
+  ".sign-in-btn:hover": {
+    backgroundColor: "#2b4aff",
+    transition: "background-color 0.5s ease"
+  },
+  ".agree-text": { display: "flex" }
+}
