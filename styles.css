@@ -79,16 +79,14 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 30px;
+    font-size: 35px;
     cursor: pointer;
     margin-right: 5px; /* Adjusted margin to bring buttons closer */
-    box-shadow: 5px 5px 5px 4px #0000001a;
-    transition: font-size 0.2s ease, box-shadow 0.2s ease;
+    transition: font-size 0.2s ease;
 }
 .social-btn:hover {
     font-size: 40px;
-    box-shadow: 5px 5px 5px 4px #00000047;
-    transition: font-size 0.2s ease, box-shadow 0.2s ease;
+    transition: font-size 0.2s ease;
 }
 
 .graphic-container {
@@ -188,16 +186,13 @@ h3 {
 }
 
 .login-header {
-    max-width: 50px; /* Adjust as needed */
+    max-width: 100%; /* Adjust as needed */
     height: auto;
-    display: flex;
     align-items: center;
 }
 
 .login-header h1 {
-    margin: 0;
-    font-family: 'Inter';
-    margin-right: 20px;
+    justify-content: center;
     white-space: nowrap;
 }
 
