@@ -8,29 +8,30 @@
     font-style: normal;
     font-variation-settings:  "slnt" 0;
 }
-
 body {
     font-family: 'Inter', sans-serif;
     display: flex;
     background-color: white;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    position: absolute;
-    inset: 0;
-    place-content: center;
-    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px; /* Ensure there's some padding for smaller screens */
   }
 
 h1 {
     text-align: center;
 }
 
+.logo-container {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    height: 100%;            /* Full viewport height, adjust as needed */
+}
+
 .logo {
-    position: absolute;
-    top: 20px;
-    width: 100px; /* Adjust the width as needed */
+    max-width: 30%;          /* Ensure the logo resizes responsively */
+    height: auto;             /* Maintain aspect ratio */
 }
 
 a {
@@ -68,7 +69,9 @@ a:hover {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    padding: 30px;
+    margin-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .social-btn {
@@ -79,14 +82,14 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 35px;
+    font-size: 30px;
     cursor: pointer;
     margin-right: 5px; /* Adjusted margin to bring buttons closer */
-    transition: font-size 0.2s ease;
+    transition: font-size 0.1s ease;
 }
 .social-btn:hover {
-    font-size: 40px;
-    transition: font-size 0.2s ease;
+    font-size: 35px;
+    transition: font-size 0.1s ease;
 }
 
 .graphic-container {
@@ -192,7 +195,7 @@ h3 {
 }
 
 .login-header h1 {
-    justify-content: center;
+    justify-items: center;
     white-space: nowrap;
 }
 
