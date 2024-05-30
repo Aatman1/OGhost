@@ -11,10 +11,10 @@
 </head>
 <body>
     <div class="login-container">
+        <div class="login-form">
         <div class="logo-container">
         <img class="logo" src="OG_logo.png" alt="Logo">
         </div>
-        <div class="login-form">
             <div class="login-header">
                 <h1>Create an Account</h1>
             </div>
@@ -260,7 +260,7 @@
                         countries.forEach(country => {
                             const option = document.createElement('option');
                             option.value = country.code;
-                            option.textContent = `${country.name} (${country.code})`;
+                            option.textContent = `(${country.code}) ${country.name} `;
                             CodeSelect.appendChild(option);
                         });
 
@@ -270,7 +270,7 @@
                         });
 
                     </script>
-                    <input type="tel" id="phone" name="phone" placeholder="Mobile Number" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Mobile Number" maxlength="11" required >
                 </div>
                 <input type="email" id="email" name="email" placeholder="Email Address" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
