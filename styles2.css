@@ -1,225 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
 body {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    background-color: whitesmoke;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    position: absolute;
-    inset: 0;
-    place-content: center;
-    overflow: hidden;
-  }
-
-  .input-style {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.phone-container {
-    display: flex;
-    flex-direction: column;
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.selected-country-code {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
+.form-container h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-  
-.logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100px; /* Adjust the width as needed */
+.form-container h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
-a {
-    font-weight: bold;
-    text-decoration: none;
-    transition: font-weight 0.2s ease, text-decoration 0.2s ease;
+.form-container p {
+  font-size: 14px;
+  margin-bottom: 20px;
 }
 
-a:hover {
-    text-decoration: underline;
-    transition: font-weight 0.2s ease, text-decoration 0.2s ease;
-}
-.login-container {
-    justify-content: left;
-    background-color: white;
-    box-shadow: 10px 10px 5px 4px #0000001a;
-    position: relative  ;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    max-width: 25%;
+.form-container p a {
+  color: #007bff;
+  text-decoration: none;
 }
 
-.login-form {
-    padding: 40px;
-    flex: 1;
+.form-group {
+  margin-bottom: 20px;
 }
 
-.login-form h1 {
-    margin-bottom: 20px;
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-.social-login {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 30px;
+.input-group {
+  display: flex;
+  align-items: center;
 }
 
-.social-btn {
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    cursor: pointer;
-    margin-right: 5px; /* Adjusted margin to bring buttons closer */
-    box-shadow: 5px 5px 5px 4px #0000001a;
-    transition: font-size 0.2s ease, box-shadow 0.2s ease;
-}
-.social-btn:hover {
-    font-size: 40px;
-    box-shadow: 5px 5px 5px 4px #00000047;
-    transition: font-size 0.2s ease, box-shadow 0.2s ease;
+.input-group select,
+.input-group input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 8px;
 }
 
-.graphic-container {
-    width: 40%;
+.input-group select {
+  margin-right: 10px;
+  width: 80px;
 }
 
-.graphic {
-    height: auto;
-    object-fit: cover;
-    border-radius: 9px;
-    box-shadow: 10px 10px 5px 4px #0000001a;
+.input-group input {
+  flex: 1;
 }
 
-.social-btn:last-child {
-    margin-right: 0; /* Remove margin for the last button */
+.btn {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
-.social-btn.google {
-    background-color: #db4437;
-    color: white;
+.btn:hover {
+  background-color: #0056b3;
 }
 
-.social-btn.linkedin {
-    background-color: #0077b5;
-    color: white;
+.go-back {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
 }
 
-.social-btn.microsoft {
-    background-color: #00a4ef;
-    color: white;
-}
-
-h3 {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #1538ff6e; 
-    line-height: 0.1em;
-    margin: 10px 0 20px; 
- } 
- 
- h3 span { 
-    color: #1538ff6e;
-     background:white; 
-     padding:0 10px; 
- }
-
-.phone-container {
-    display: flex;
-    align-items: center;
-}
-
-.phone-container select, .phone-container input {
-    margin-right: 5px;
-}
-
-.phone-container select {
-    width: auto;
-}
-
-.login-form input {
-    width: calc(100% - 20px);
-    margin: 10px 0;
-    padding: 10px;
-    border-width: 2px;
-    border-color: #563bff;
-    border-radius: 5px;
-}
-
-.Nation-Code {
-    max-width: 25%;
-    text-overflow: clip;
-    margin: 10px 0;
-    padding: 10px;
-    border-width: 2px;
-    border-color: #563bff;
-    border-radius: 5px;
-}
-
-.login-header {
-    display: flex;
-    align-items: center;
-}
-
-.login-header h1 {
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-    margin-right: 20px;
-    white-space: nowrap;
-}
-
-.login-header {
-    max-width: 50px; /* Adjust as needed */
-    height: auto;
-}
-
-.forgot-password {
-    display: block;
-    text-align: right;
-    margin-bottom: 20px;
-    color: #563bff;
-    text-decoration: none;
-}
-
-.sign-in-btn {
-    width: 100%;
-    padding: 10px;
-    font-family: 'Open Sans', sans-serif;
-    background-color: #563bff;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-}
-
-.sign-in-btn:hover {
-    background-color: #2b4aff;
-    transition: background-color 0.5s ease;
-
-
-}
-
-.agree-text {
-    display: flex;
+.beta {
+  background-color: #ffc107;
+  color: #333;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 5px;
 }

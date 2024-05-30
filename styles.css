@@ -8,6 +8,7 @@
     font-style: normal;
     font-variation-settings:  "slnt" 0;
 }
+
 body {
     font-family: 'Inter', sans-serif;
     display: flex;
@@ -15,7 +16,8 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding: 20px; /* Ensure there's some padding for smaller screens */
+    padding: 20px;
+    -webkit-text-size-adjust: 100%;
   }
 
 h1 {
@@ -46,10 +48,10 @@ a:hover {
 }
 
 .login-container {
-    max-width: 500px;
+
+    max-width: 320px;
     justify-content: left;
     background-color: white;
-    /* box-shadow: 10px 10px 5px 4px #0000001a; */
     border-radius: 10px;
     overflow: hidden;
     display: inline-flexbox;
@@ -58,7 +60,8 @@ a:hover {
 }
 
 .login-form {
-    padding: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .login-form h1 {
@@ -70,8 +73,8 @@ a:hover {
     justify-content: space-between;
     margin-bottom: 20px;
     margin-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .social-btn {
@@ -84,7 +87,7 @@ a:hover {
     align-items: center;
     font-size: 30px;
     cursor: pointer;
-    margin-right: 5px; /* Adjusted margin to bring buttons closer */
+    margin-right: 5px; /* Adjusted margin to bringbox buttons closer */
     transition: font-size 0.1s ease;
 }
 .social-btn:hover {
@@ -100,7 +103,6 @@ a:hover {
     height: auto;
     object-fit: cover;
     border-radius: 9px;
-    box-shadow: 10px 10px 5px 4px #0000001a;
 }
 
 .social-btn:last-child {
@@ -138,38 +140,42 @@ h3 {
 
 .phone-container {
     display: flex;
-    align-items: center;
 }
 
-.phone-container select, .phone-container input {
-    margin-right: 5px;
-}
+.input-style:focus:active {
+    border-color: #2b4aff; /* change the border color to #2b4aff when the input field is both focused and active */
+    transition: border-color 0.5s ease;
+  }
 
 .phone-container select {
     width: 100%;
-    display: flex;
     flex-direction: column;
     border-width: 2px;
     border-color: #563bff;
     border-radius: 5px;
 }
 
-.phone-container:hover {
-    border-color: #2b4aff;
-    transition: border-color 0.5s ease;
+.input-style {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-input {
-    width: 100%;
-
+.login-form {
+    padding: 0%;
 }
 
 .login-form input {
     width: calc(100% - 20px);
     margin: 10px 0;
     padding: 10px;
-    padding-left: 0px;
-    padding: right 0px;
+    padding-left: 5px;
+    padding: right 5px;
     border-width: 2px;
     border-color: #563bff;
     border-radius: 5px;

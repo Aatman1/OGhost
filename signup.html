@@ -31,7 +31,6 @@
                         <option value="" disabled selected>Select Country</option>
                     </select>
                     <input type="hidden" id="hiddenCountryCode" name="hiddenCountryCode">
-                    
                     <script>
                         const CodeSelect = document.getElementById('countryCode');
                         const hiddenCountryCode = document.getElementById('hiddenCountryCode');
@@ -264,13 +263,10 @@
                             CodeSelect.appendChild(option);
                         });
 
-                        // Update hidden field with selected country code
-                        CodeSelect.addEventListener('change', () => {
-                            hiddenCountryCode.value = CodeSelect.value;
-                        });
-
                     </script>
-                    <input type="tel" id="phone" name="phone" placeholder="Mobile Number" maxlength="11" required >
+                    <div>
+                        <input type="tel" id="phone" name="phone" placeholder="Mobile Number" maxlength="11" required >
+                    </div>
                 </div>
                 <input type="email" id="email" name="email" placeholder="Email Address" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
