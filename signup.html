@@ -4,314 +4,369 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
-    <link href="ghost_L2.png" rel="icon" media="(prefers-color-scheme: light)">
-    <link href="ghost_L.png" rel="icon" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        img {
+            width: 130px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #countryCode {
+            width: 80px; /* fixed width */
+        }
+        
+        #countryCode option {
+            position: relative;
+        }
+        
+        #countryCode option::after {
+            content: attr(data-full-name);
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 5px;
+            display: none;
+        }
+        
+        #countryCode option:hover::after {
+            display: block;
+        }
+       .container {
+            text-align: center;
+        }
+       .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: none;
+            border-color: #563bff;
+        }
+       .placeholder {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            color: #999;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+        input[type="text"]:focus ~.placeholder,
+        input[type="text"]:not(:placeholder-shown) ~.placeholder,
+        input[type="tel"]:focus ~.placeholder,
+        input[type="tel"]:not(:placeholder-shown) ~.placeholder,
+        input[type="password"]:focus ~.placeholder,
+        input[type="password"]:not(:placeholder-shown) ~.placeholder {
+            top: -18px;
+            left: 5px;
+            color: #999;
+            font-size: 12px;
+            background-color: white;
+            padding: 0 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #563bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            width: 100%;
+        }
+       .password-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+            display: none;
+        }
+       .password-info.show {
+            display: block;
+        }
+        a {
+            color: #563bff;
+            text-decoration: none;
+        }
+        p {
+            margin: 5px 0;
+        }
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80px;
+            font-size: 16px;
+            transition: 0.3s;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+        }
+        select:focus {
+            outline: none;
+            border-color: #563bff;
+        }
+    </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-form">
-        <div class="logo-container">
-        <img class="logo" src="OG_logo.png" alt="Logo">
+    <div class="container">
+        <img src="OG_logo.png" alt="Logo">
+        <h2>Create your account</h2>
+        <div class="input-group">
+            <select id="countryCode">
+                <option value="+91" data-full-name="India">IN</option>
+                <option value="+1" data-full-name="United States">US</option>
+                <option value="+44" data-full-name="United Kingdom">UK</option>
+                <option value="+61" data-full-name="Australia">AU</option>
+                <option value="+81" data-full-name="Japan">JP</option>
+                <option value="+49" data-full-name="Germany">DE</option>
+                <option value="+33" data-full-name="France">FR</option>
+                <option value="+39" data-full-name="Italy">IT</option>
+                <option value="+86" data-full-name="China">CN</option>
+                <option value="+7" data-full-name="Russia">RU</option>
+                <option value="+55" data-full-name="Brazil">BR</option>
+                <option value="+27" data-full-name="South Africa">ZA</option>
+                <option value="+34" data-full-name="Spain">ES</option>
+                <option value="+82" data-full-name="South Korea">KR</option>
+                <option value="+46" data-full-name="Sweden">SE</option>
+                <option value="+31" data-full-name="Netherlands">NL</option>
+                <option value="+34" data-full-name="Spain">ES</option>
+                <option value="+47" data-full-name="Norway">NO</option>
+                <option value="+45" data-full-name="Denmark">DK</option>
+                <option value="+48" data-full-name="Poland">PL</option>
+                <option value="+52" data-full-name="Mexico">MX</option>
+                <option value="+41" data-full-name="Switzerland">CH</option>
+                <option value="+351" data-full-name="Portugal">PT</option>
+                <option value="+66" data-full-name="Thailand">TH</option>
+                <option value="+90" data-full-name="Turkey">TR</option>
+                <option value="+60" data-full-name="Malaysia">MY</option>
+                <option value="+65" data-full-name="Singapore">SG</option>
+                <option value="+62" data-full-name="Indonesia">ID</option>
+                <option value="+63" data-full-name="Philippines">PH</option>
+                <option value="+92" data-full-name="Pakistan">PK</option>
+                <option value="+964" data-full-name="Iraq">IQ</option>
+                <option value="+98" data-full-name="Iran">IR</option>
+                <option value="+213" data-full-name="Algeria">DZ</option>
+                <option value="+54" data-full-name="Argentina">AR</option>
+                <option value="+61" data-full-name="Australia">AU</option>
+                <option value="+43" data-full-name="Austria">AT</option>
+                <option value="+973" data-full-name="Bahrain">BH</option>
+                <option value="+880" data-full-name="Bangladesh">BD</option>
+                <option value="+32" data-full-name="Belgium">BE</option>
+                <option value="+591" data-full-name="Bolivia">BO</option>
+                <option value="+267" data-full-name="Botswana">BW</option>
+                <option value="+359" data-full-name="Bulgaria">BG</option>
+                <option value="+855" data-full-name="Cambodia">KH</option>
+                <option value="+237" data-full-name="Cameroon">CM</option>
+                <option value="+1" data-full-name="Canada">CA</option>
+                <option value="+56" data-full-name="Chile">CL</option>
+                <option value="+57" data-full-name="Colombia">CO</option>
+                <option value="+506" data-full-name="Costa Rica">CR</option>
+                <option value="+385" data-full-name="Croatia">HR</option>
+                <option value="+53" data-full-name="Cuba">CU</option>
+                <option value="+357" data-full-name="Cyprus">CY</option>
+                <option value="+420" data-full-name="Czech Republic">CZ</option>
+                <option value="+253" data-full-name="Djibouti">DJ</option>
+                <option value="+593" data-full-name="Ecuador">EC</option>
+                <option value="+20" data-full-name="Egypt">EG</option>
+                <option value="+503" data-full-name="El Salvador">SV</option>
+                <option value="+372" data-full-name="Estonia">EE</option>
+                <option value="+251" data-full-name="Ethiopia">ET</option>
+                <option value="+679" data-full-name="Fiji">FJ</option>
+                <option value="+358" data-full-name="Finland">FI</option>
+                <option value="+220" data-full-name="Gambia">GM</option>
+                <option value="+995" data-full-name="Georgia">GE</option>
+                <option value="+233" data-full-name="Ghana">GH</option>
+                <option value="+30" data-full-name="Greece">GR</option>
+                <option value="+502" data-full-name="Guatemala">GT</option>
+                <option value="+224" data-full-name="Guinea">GN</option>
+                <option value="+509" data-full-name="Haiti">HT</option>
+                <option value="+504" data-full-name="Honduras">HN</option>
+                <option value="+36" data-full-name="Hungary">HU</option>
+                <option value="+354" data-full-name="Iceland">IS</option>
+                <option value="+62" data-full-name="Indonesia">ID</option>
+                <option value="+98" data-full-name="Iran">IR</option>
+                <option value="+964" data-full-name="Iraq">IQ</option>
+                <option value="+353" data-full-name="Ireland">IE</option>
+                <option value="+972" data-full-name="Israel">IL</option>
+                <option value="+225" data-full-name="Ivory Coast">CI</option>
+                <option value="+962" data-full-name="Jordan">JO</option>
+                <option value="+7" data-full-name="Kazakhstan">KZ</option>
+                <option value="+254" data-full-name="Kenya">KE</option>
+                <option value="+965" data-full-name="Kuwait">KW</option>
+                <option value="+996" data-full-name="Kyrgyzstan">KG</option>
+                <option value="+856" data-full-name="Laos">LA</option>
+                <option value="+371" data-full-name="Latvia">LV</option>
+                <option value="+961" data-full-name="Lebanon">LB</option>
+                <option value="+231" data-full-name="Liberia">LR</option>
+                <option value="+218" data-full-name="Libya">LY</option>
+                <option value="+423" data-full-name="Liechtenstein">LI</option>
+                <option value="+370" data-full-name="Lithuania">LT</option>
+                <option value="+352" data-full-name="Luxembourg">LU</option>
+                <option value="+853" data-full-name="Macau">MO</option>
+                <option value="+389" data-full-name="Macedonia">MK</option>
+                <option value="+261" data-full-name="Madagascar">MG</option>
+                <option value="+265" data-full-name="Malawi">MW</option>
+                <option value="+60" data-full-name="Malaysia">MY</option>
+                <option value="+960" data-full-name="Maldives">MV</option>
+                <option value="+223" data-full-name="Mali">ML</option>
+                <option value="+356" data-full-name="Malta">MT</option>
+                <option value="+222" data-full-name="Mauritania">MR</option>
+                <option value="+230" data-full-name="Mauritius">MU</option>
+                <option value="+52" data-full-name="Mexico">MX</option>
+                <option value="+373" data-full-name="Moldova">MD</option>
+                <option value="+377" data-full-name="Monaco">MC</option>
+                <option value="+976" data-full-name="Mongolia">MN</option>
+                <option value="+382" data-full-name="Montenegro">ME</option>
+                <option value="+212" data-full-name="Morocco">MA</option>
+                <option value="+258" data-full-name="Mozambique">MZ</option>
+                <option value="+95" data-full-name="Myanmar">MM</option>
+                <option value="+264" data-full-name="Namibia">NA</option>
+                <option value="+977" data-full-name="Nepal">NP</option>
+                <option value="+31" data-full-name="Netherlands">NL</option>
+                <option value="+64" data-full-name="New Zealand">NZ</option>
+                <option value="+505" data-full-name="Nicaragua">NI</option>
+                <option value="+227" data-full-name="Niger">NE</option>
+                <option value="+234" data-full-name="Nigeria">NG</option>
+                <option value="+47" data-full-name="Norway">NO</option>
+                <option value="+968" data-full-name="Oman">OM</option>
+                <option value="+92" data-full-name="Pakistan">PK</option>
+                <option value="+507" data-full-name="Panama">PA</option>
+                <option value="+675" data-full-name="Papua New Guinea">PG</option>
+                <option value="+595" data-full-name="Paraguay">PY</option>
+                <option value="+51" data-full-name="Peru">PE</option>
+                <option value="+63" data-full-name="Philippines">PH</option>
+                <option value="+48" data-full-name="Poland">PL</option>
+                <option value="+351" data-full-name="Portugal">PT</option>
+                <option value="+974" data-full-name="Qatar">QA</option>
+                <option value="+40" data-full-name="Romania">RO</option>
+                <option value="+7" data-full-name="Russia">RU</option>
+                <option value="+250" data-full-name="Rwanda">RW</option>
+                <option value="+966" data-full-name="Saudi Arabia">SA</option>
+                <option value="+221" data-full-name="Senegal">SN</option>
+                <option value="+381" data-full-name="Serbia">RS</option>
+                <option value="+248" data-full-name="Seychelles">SC</option>
+                <option value="+232" data-full-name="Sierra Leone">SL</option>
+                <option value="+65" data-full-name="Singapore">SG</option>
+                <option value="+421" data-full-name="Slovakia">SK</option>
+                <option value="+386" data-full-name="Slovenia">SI</option>
+                <option value="+27" data-full-name="South Africa">ZA</option>
+                <option value="+82" data-full-name="South Korea">KR</option>
+                <option value="+34" data-full-name="Spain">ES</option>
+                <option value="+94" data-full-name="Sri Lanka">LK</option>
+                <option value="+249" data-full-name="Sudan">SD</option>
+                <option value="+597" data-full-name="Suriname">SR</option>
+                <option value="+268" data-full-name="Swaziland">SZ</option>
+                <option value="+46" data-full-name="Sweden">SE</option>
+                <option value="+41" data-full-name="Switzerland">CH</option>
+                <option value="+963" data-full-name="Syria">SY</option>
+                <option value="+886" data-full-name="Taiwan">TW</option>
+                <option value="+992" data-full-name="Tajikistan">TJ</option>
+                <option value="+255" data-full-name="Tanzania">TZ</option>
+                <option value="+66" data-full-name="Thailand">TH</option>
+                <option value="+228" data-full-name="Togo">TG</option>
+                <option value="+676" data-full-name="Tonga">TO</option>
+                <option value="+216" data-full-name="Tunisia">TN</option>
+                <option value="+90" data-full-name="Turkey">TR</option>
+                <option value="+993" data-full-name="Turkmenistan">TM</option>
+                <option value="+256" data-full-name="Uganda">UG</option>
+                <option value="+380" data-full-name="Ukraine">UA</option>
+                <option value="+971" data-full-name="United Arab Emirates">AE</option>
+                <option value="+44" data-full-name="United Kingdom">UK</option>
+                <option value="+1" data-full-name="United States">US</option>
+                <option value="+598" data-full-name="Uruguay">UY</option>
+                <option value="+998" data-full-name="Uzbekistan">UZ</option>
+                <option value="+678" data-full-name="Vanuatu">VU</option>
+                <option value="+58" data-full-name="Venezuela">VE</option>
+                <option value="+84" data-full-name="Vietnam">VN</option>
+                <option value="+967" data-full-name="Yemen">YE</option>
+                <option value="+260" data-full-name="Zambia">ZM</option>
+                <option value="+263" data-full-name="Zimbabwe">ZW</option> 
+            </select>
+            <input type="text" id="phoneNumber" style="margin-left: 82px; width: 168px" maxlength="11" value="" placeholder=" " required>
+            <span class="placeholder" style="left: 90px;">Phone Number</span>
         </div>
-            <div class="login-header">
-                <h1>Create an Account</h1>
-            </div>
-            <div class="social-login">
-                <button class="social-btn google"><i class="fab fa-google"></i></button>
-                <button class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></button>
-                <button class="social-btn microsoft"><i class="fab fa-microsoft"></i></button>
-            </div>
-            <h3><span>or</span></h3>
-            <form id="create-account-form">
-                <input type="text" id="name" name="Name" placeholder="Full Name" required>
-                <div class="phone-container">
-                    <select class="Nation-Code" id="countryCode" name="countryCode" required>
-                        <option value="" disabled selected>Select Country</option>
-                    </select>
-                    <input type="hidden" id="hiddenCountryCode" name="hiddenCountryCode">
-                    <script>
-                        const CodeSelect = document.getElementById('countryCode');
-                        const hiddenCountryCode = document.getElementById('hiddenCountryCode');
-                        const selectedCountryCode = document.getElementById('selectedCountryCode');
-
-                        // Array of objects containing country code and country name
-                        const countries = [
-                            { code: "+91", name: "India" },
-                            { code: "+93", name: "Afghanistan" },
-                            { code: "+355", name: "Albania" },
-                            { code: "+213", name: "Algeria" },
-                            { code: "+376", name: "Andorra" },
-                            { code: "+244", name: "Angola" },
-                            { code: "+54", name: "Argentina" },
-                            { code: "+297", name: "Aruba" },
-                            { code: "+374", name: "Armenia" },
-                            { code: "+61", name: "Australia" },
-                            { code: "+43", name: "Austria" },
-                            { code: "+994", name: "Azerbaijan" },
-                            { code: "+973", name: "Bahrain" },
-                            { code: "+880", name: "Bangladesh" },
-                            { code: "+375", name: "Belarus" },
-                            { code: "+32", name: "Belgium" },
-                            { code: "+501", name: "Belize" },
-                            { code: "+229", name: "Benin" },
-                            { code: "+975", name: "Bhutan" },
-                            { code: "+591", name: "Bolivia" },
-                            { code: "+387", name: "Bosnia and Herzegovina" },
-                            { code: "+267", name: "Botswana" },
-                            { code: "+55", name: "Brazil" },
-                            { code: "+246", name: "Diego Garcia" },
-                            { code: "+673", name: "Brunei Darussalam" },
-                            { code: "+359", name: "Bulgaria" },
-                            { code: "+226", name: "Burkina Faso" },
-                            { code: "+257", name: "Burundi" },
-                            { code: "+855", name: "Cambodia" },
-                            { code: "+237", name: "Cameroon" },
-                            { code: "+238", name: "Cape Verde" },
-                            { code: "+236", name: "Central African Republic" },
-                            { code: "+235", name: "Chad" },
-                            { code: "+56", name: "Chile" },
-                            { code: "+86", name: "China" },
-                            { code: "+61", name: "Christmas Island" },
-                            { code: "+61", name: "Cocos (Keeling) Islands" },
-                            { code: "+57", name: "Colombia" },
-                            { code: "+269", name: "Comoros" },
-                            { code: "+242", name: "Republic of the Congo" },
-                            { code: "+243", name: "Democratic Republic of the Congo" },
-                            { code: "+682", name: "Cook Islands" },
-                            { code: "+506", name: "Costa Rica" },
-                            { code: "+225", name: "Ivory Coast" },
-                            { code: "+385", name: "Croatia" },
-                            { code: "+53", name: "Cuba" },
-                            { code: "+357", name: "Cyprus" },
-                            { code: "+420", name: "Czech Republic" },
-                            { code: "+45", name: "Denmark" },
-                            { code: "+253", name: "Djibouti" },
-                            { code: "+670", name: "East Timor" },
-                            { code: "+593", name: "Ecuador" },
-                            { code: "+20", name: "Egypt" },
-                            { code: "+503", name: "El Salvador" },
-                            { code: "+240", name: "Equatorial Guinea" },
-                            { code: "+291", name: "Eritrea" },
-                            { code: "+372", name: "Estonia" },
-                            { code: "+251", name: "Ethiopia" },
-                            { code: "+500", name: "Falkland Islands" },
-                            { code: "+298", name: "Faroe Islands" },
-                            { code: "+679", name: "Fiji" },
-                            { code: "+358", name: "Finland" },
-                            { code: "+33", name: "France" },
-                            { code: "+594", name: "French Guiana" },
-                            { code: "+689", name: "French Polynesia" },
-                            { code: "+241", name: "Gabon" },
-                            { code: "+220", name: "Gambia" },
-                            { code: "+995", name: "Georgia" },
-                            { code: "+49", name: "Germany" },
-                            { code: "+233", name: "Ghana" },
-                            { code: "+350", name: "Gibraltar" },
-                            { code: "+30", name: "Greece" },
-                            { code: "+299", name: "Greenland" },
-                            { code: "+590", name: "Guadeloupe" },
-                            { code: "+502", name: "Guatemala" },
-                            { code: "+224", name: "Guinea" },
-                            { code: "+245", name: "Guinea-Bissau" },
-                            { code: "+592", name: "Guyana" },
-                            { code: "+509", name: "Haiti" },
-                            { code: "+504", name: "Honduras" },
-                            { code: "+852", name: "Hong Kong" },
-                            { code: "+36", name: "Hungary" },
-                            { code: "+354", name: "Iceland" },
-                            { code: "+62", name: "Indonesia" },
-                            { code: "+98", name: "Iran" },
-                            { code: "+964", name: "Iraq" },
-                            { code: "+353", name: "Ireland" },
-                            { code: "+972", name: "Israel" },
-                            { code: "+39", name: "Italy" },
-                            { code: "+81", name: "Japan" },
-                            { code: "+962", name: "Jordan" },
-                            { code: "+7", name: "Kazakhstan" },
-                            { code: "+254", name: "Kenya" },
-                            { code: "+686", name: "Kiribati" },
-                            { code: "+965", name: "Kuwait" },
-                            { code: "+996", name: "Kyrgyzstan" },
-                            { code: "+856", name: "Laos" },
-                            { code: "+371", name: "Latvia" },
-                            { code: "+961", name: "Lebanon" },
-                            { code: "+266", name: "Lesotho" },
-                            { code: "+231", name: "Liberia" },
-                            { code: "+218", name: "Libya" },
-                            { code: "+423", name: "Liechtenstein" },
-                            { code: "+370", name: "Lithuania" },
-                            { code: "+352", name: "Luxembourg" },
-                            { code: "+853", name: "Macau" },
-                            { code: "+389", name: "North Macedonia" },
-                            { code: "+261", name: "Madagascar" },
-                            { code: "+265", name: "Malawi" },
-                            { code: "+60", name: "Malaysia" },
-                            { code: "+960", name: "Maldives" },
-                            { code: "+223", name: "Mali" },
-                            { code: "+356", name: "Malta" },
-                            { code: "+692", name: "Marshall Islands" },
-                            { code: "+596", name: "Martinique" },
-                            { code: "+222", name: "Mauritania" },
-                            { code: "+230", name: "Mauritius" },
-                            { code: "+262", name: "Mayotte" },
-                            { code: "+52", name: "Mexico" },
-                            { code: "+691", name: "Micronesia" },
-                            { code: "+373", name: "Moldova" },
-                            { code: "+377", name: "Monaco" },
-                            { code: "+976", name: "Mongolia" },
-                            { code: "+382", name: "Montenegro" },
-                            { code: "+1664", name: "Montserrat" },
-                            { code: "+212", name: "Morocco" },
-                            { code: "+258", name: "Mozambique" },
-                            { code: "+95", name: "Myanmar" },
-                            { code: "+264", name: "Namibia" },
-                            { code: "+674", name: "Nauru" },
-                            { code: "+977", name: "Nepal" },
-                            { code: "+31", name: "Netherlands" },
-                            { code: "+687", name: "New Caledonia" },
-                            { code: "+64", name: "New Zealand" },
-                            { code: "+505", name: "Nicaragua" },
-                            { code: "+227", name: "Niger" },
-                            { code: "+234", name: "Nigeria" },
-                            { code: "+683", name: "Niue" },
-                            { code: "+850", name: "North Korea" },
-                            { code: "+1670", name: "Northern Mariana Islands" },
-                            { code: "+47", name: "Norway" },
-                            { code: "+968", name: "Oman" },
-                            { code: "+92", name: "Pakistan" },
-                            { code: "+680", name: "Palau" },
-                            { code: "+970", name: "Palestine" },
-                            { code: "+507", name: "Panama" },
-                            { code: "+675", name: "Papua New Guinea" },
-                            { code: "+595", name: "Paraguay" },
-                            { code: "+51", name: "Peru" },
-                            { code: "+63", name: "Philippines" },
-                            { code: "+48", name: "Poland" },
-                            { code: "+351", name: "Portugal" },
-                            { code: "+974", name: "Qatar" },
-                            { code: "+262", name: "Reunion" },
-                            { code: "+40", name: "Romania" },
-                            { code: "+7", name: "Russia" },
-                            { code: "+250", name: "Rwanda" },
-                            { code: "+590", name: "Saint Barthelemy" },
-                            { code: "+290", name: "Saint Helena" },
-                            { code: "+1869", name: "Saint Kitts and Nevis" },
-                            { code: "+1758", name: "Saint Lucia" },
-                            { code: "+590", name: "Saint Martin" },
-                            { code: "+508", name: "Saint Pierre and Miquelon" },
-                            { code: "+1784", name: "Saint Vincent and the Grenadines" },
-                            { code: "+685", name: "Samoa" },
-                            { code: "+378", name: "San Marino" },
-                            { code: "+239", name: "Sao Tome and Principe" },
-                            { code: "+966", name: "Saudi Arabia" },
-                            { code: "+221", name: "Senegal" },
-                            { code: "+381", name: "Serbia" },
-                            { code: "+248", name: "Seychelles" },
-                            { code: "+232", name: "Sierra Leone" },
-                            { code: "+65", name: "Singapore" },
-                            { code: "+421", name: "Slovakia" },
-                            { code: "+386", name: "Slovenia" },
-                            { code: "+677", name: "Solomon Islands" },
-                            { code: "+252", name: "Somalia" },
-                            { code: "+27", name: "South Africa" },
-                            { code: "+82", name: "South Korea" },
-                            { code: "+211", name: "South Sudan" },
-                            { code: "+34", name: "Spain" },
-                            { code: "+94", name: "Sri Lanka" },
-                            { code: "+249", name: "Sudan" },
-                            { code: "+597", name: "Suriname" },
-                            { code: "+268", name: "Swaziland" },
-                            { code: "+46", name: "Sweden" },
-                            { code: "+41", name: "Switzerland" },
-                            { code: "+963", name: "Syria" },
-                            { code: "+886", name: "Taiwan" },
-                            { code: "+992", name: "Tajikistan" },
-                            { code: "+255", name: "Tanzania" },
-                            { code: "+66", name: "Thailand" },
-                            { code: "+228", name: "Togo" },
-                            { code: "+690", name: "Tokelau" },
-                            { code: "+676", name: "Tonga" },
-                            { code: "+1868", name: "Trinidad and Tobago" },
-                            { code: "+216", name: "Tunisia" },
-                            { code: "+90", name: "Turkey" },
-                            { code: "+993", name: "Turkmenistan" },
-                            { code: "+1649", name: "Turks and Caicos Islands" },
-                            { code: "+688", name: "Tuvalu" },
-                            { code: "+256", name: "Uganda" },
-                            { code: "+380", name: "Ukraine" },
-                            { code: "+971", name: "United Arab Emirates" },
-                            { code: "+44", name: "United Kingdom" },
-                            { code: "+1", name: "United States" },
-                            { code: "+598", name: "Uruguay" },
-                            { code: "+998", name: "Uzbekistan" },
-                            { code: "+678", name: "Vanuatu" },
-                            { code: "+58", name: "Venezuela" },
-                            { code: "+84", name: "Vietnam" },
-                            { code: "+681", name: "Wallis and Futuna" },
-                            { code: "+967", name: "Yemen" },
-                            { code: "+260", name: "Zambia" },
-                            { code: "+263", name: "Zimbabwe" }
-                        ];
-
-                        // Populate the select element with options
-                        countries.forEach(country => {
-                            const option = document.createElement('option');
-                            option.value = country.code;
-                            option.textContent = `(${country.code}) ${country.name} `;
-                            CodeSelect.appendChild(option);
-                        });
-
-                    </script>
-                    <div>
-                        <input type="tel" id="phone" name="phone" placeholder="Mobile Number" maxlength="11" required >
-                    </div>
-                </div>
-                <input type="email" id="email" name="email" placeholder="Email Address" required>
-                <input type="password" id="password" name="password" placeholder="Password" required>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
-                <button type="submit"  class="sign-in-btn">Create Account</button>
-                <div class="agree-text">
-                    <p>By accepting to Register on our platform, you agree that you have read and accepted our <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a>, 
-                        <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> and <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a></p>
-                </div>
-            </form>
-            <p class="login-link">Already have an account? <a href="signin.html">Log In</a></p>
+        <div class="input-group">
+            <input type="text" id="fullName" value="" placeholder=" " required>
+            <span class="placeholder">Full Name</span>
         </div>
+        <div class="input-group">
+            <input type="text" id="email" value="" placeholder=" " required>
+            <span class="placeholder">Email</span>
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" value="" placeholder=" " required>
+            <span class="placeholder">Password</span>
+        </div>
+        <div class="password-info">
+            <p>Your password must contain:</p>
+            <ul>
+                <li>At least 12 characters</li>
+            </ul>
+        </div>
+        <button id="continue">Continue</button>
+        <p>Already have an account? <a href="#">Log in</a></p>
+        <p>Terms of Use | Privacy Policy</p>
     </div>
+    
     <script>
-        // Add event listener for form submission
-        document.getElementById('create-account-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form from submitting normally
-
-            // Get form data
-            const name = document.getElementById('name').value;
-            const countryCode = document.getElementById('countryCode').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const contactNum = "(" + countryCode + ")" + phone;
-
-            // Log form data to console
-            console.log('Name:', name);
-            console.log('Country Code:', countryCode);
-            console.log('Phone:', phone);
-            console.log('Email:', email);
-            console.log('Password:', password);
-            console.log('Confirm Password:', confirmPassword);
-            console.log('Contact Number', contactNum);
-
-            // Here you can also handle form submission, e.g., sending data to a server
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-            else{
-            alert(`Account created for ${name} with phone ${phone} and email ${email}`);
+        // JavaScript code for additional functionality
+        const continueBtn = document.getElementById('continue');
+        const passwordInput = document.getElementById('password');
+        const passwordInfo = document.querySelector('.password-info');
+    
+        passwordInput.addEventListener('input', () => {
+            passwordInfo.classList.add('show');
+        });
+    
+        continueBtn.addEventListener('click', () => {
+            const passwordValue = passwordInput.value;
+            if (passwordValue.length >= 12) {
+                // Proceed with account creation
+                console.log('Account created successfully!');
+            } else {
+                alert('Password must be at least 12 characters long.');
             }
         });
+        // Add event listener to the select field
+        document.getElementById('countryCode').addEventListener('mouseover', function(event) {
+        // Show the full country name on hover
+        var option = event.target;
+        var fullName = option.getAttribute('data-full-name');
+        option.title = fullName;
+        });
+        // Get all input fields on the page
+        var inputFields = document.getElementsByTagName('input');
+
+        // Loop through each input field
+        for (var i = 0; i < inputFields.length; i++) {
+            // Add an event listener to the input field
+            inputFields[i].addEventListener('input', function(event) {
+                // Log the value of the input field to the console
+                console.log(event.target.value);
+            });
+        }
     </script>
-</body>
-</html>
+    </body>
+    </html>
