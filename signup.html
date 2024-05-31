@@ -10,8 +10,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100%;
             margin: 0;
+            padding: 0;
             background-color: white;
         }
         .container {
@@ -33,9 +34,6 @@
             margin-bottom: 20px;
             display: flex;
             align-items: flex-end;
-        }
-        .input-group input.invalid {
-            border-color: red;
         }
         input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
             padding: 10px;
@@ -111,12 +109,14 @@
         .password-toggle img {
             height: 20px;
             align-self: flex-end;
+            opacity: 50%;
+        } 
+        .password-toggle img:hover{
+            opacity: 100%;
+            transition: 0.2s;
         }
-        .input-group input.invalid {
-            border-color: red; /* Change to your desired border color */
-        }              
         button {
-            padding: 10px 20px;
+            padding: 10px;
             background-color: #563bff;
             color: white;
             border-color: #563bff;
@@ -147,7 +147,8 @@
             transition: 0.3;
         }
         .alternate-options button img {
-            width: 30px;
+            width: 20px;
+            padding: 0 5px 0 5px;
         }
         
         .alternate-options button .icon-text-container {
@@ -211,18 +212,32 @@
         .hidden {
             display: none;
         }
+        #passwordAuthStatement img {
+            height: 16px; /* Adjust the height of the images as needed */
+            vertical-align: middle; /* Align images vertically */
+            margin-right: 5px; /* Add spacing between the image and the text */
+        }
+        #passwordAuthStatement img {
+            height: 16px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .passAuth {
+            border-color: #999;
+        }
         .error {
-            color: red;
+            border: 1px solid #ccc;
+            padding: 10px; /* Optional: Add some padding */
+            border-radius: 4px; /* Optional: Add rounded corners */
             font-size: 14px;
             text-align: left;
-            list-style-type: "✘  ";
+            list-style-type: " ";
             margin-bottom: 20px;
             margin-top: 0px;
+            padding-left: 10px;
         }
         .valid {
-            color: green;
-            margin-top: 7px;
-            list-style-type: "✔  "; /* Change bullet list symbol */
+            list-style-type: "  "; /* Change bullet list symbol */
         }
     </style>
 </head>
@@ -423,11 +438,11 @@
             </div>
             <div class="passAuth">
                 <ul id="passwordAuthStatement" class="error hidden">
-                    <li id="length">Must be 8-16 characters long</li>
-                    <li id="lowercase">Must contain at least 1 lowercase letter</li>
-                    <li id="uppercase">Must contain at least 1 uppercase letter</li>
-                    <li id="special">Must contain at least 1 special character</li>
-                </ul>
+                    <li id="length"><img src="cross.png" alt="Status"> Must be 8-16 characters long</li>
+                    <li id="lowercase"><img src="cross.png" alt="Status"> Must contain at least 1 lowercase letter</li>
+                    <li id="uppercase"><img src="cross.png" alt="Status"> Must contain at least 1 uppercase letter</li>
+                    <li id="special"><img src="cross.png" alt="Status"> Must contain at least 1 special character</li>
+                </ul>                
             </div>
             <button type="submit">Create Account</button>
             <p>By creating an account, you agree to OfferGhost's 
@@ -474,6 +489,12 @@
         const inputTypes = ['text', 'password', 'email', 'tel'];
         const phoneNumberInput = document.getElementById('phoneNumber');
         const inputFields = document.querySelectorAll('.input-group input');
+        const requirementImages = {
+            'length': document.querySelector('#length img'),
+            'lowercase': document.querySelector('#lowercase img'),
+            'uppercase': document.querySelector('#uppercase img'),
+            'special': document.querySelector('#special img')
+        };
 
         inputTypes.forEach(inputType => {
             const inputField = document.querySelector(`input[type="${inputType}"]`);
@@ -526,26 +547,9 @@
 
             for (const key in requirements) {
                 const element = document.getElementById(key);
-                element.style.color = requirements[key] ? 'green' : 'red';
                 element.classList.toggle('valid', requirements[key]);
             }
         });
-
-        function validateForm() {
-            const requiredFields = document.querySelectorAll('#createAccountForm [required]');
-            let isValid = true;
-        
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('invalid');
-                    isValid = false;
-                } else {
-                    field.classList.remove('invalid');
-                }
-            });
-        
-            return isValid;
-        }
         
         createAccountForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -561,20 +565,52 @@
             
             requiredFields.forEach(field => {
                 if (field.value.trim() === '') {
-                    field.classList.add('empty');
+                    field.classList.add('invalid');
                     isEmpty = true;
                 } else {
-                    field.classList.remove('empty');
+                    field.classList.remove('invalid');
                 }
             });
-            
-            if (Object.values(requirements).every(Boolean) && !isEmpty) {
-                console.log('Account created successfully!');
-                verificationContainer.classList.remove('hidden');
-                document.querySelector('.container').classList.add('hidden');
-            } else {
-                alert('Please ensure the password meets all the requirements and all required fields are filled in.');
+        });
+        passwordInput.addEventListener('input', () => {
+            passwordAuthStatement.classList.remove('hidden');
+            const password = passwordInput.value;
+            const requirements = {
+                'length': password.length >= 8 && password.length <= 16,
+                'lowercase': /[a-z]/.test(password),
+                'uppercase': /[A-Z]/.test(password),
+                'special': /[!@#$%^&*(),.?":{}|<>]/.test(password)
+            };
+        
+            for (const key in requirements) {
+                const isValid = requirements[key];
+                const element = document.getElementById(key);
+                const image = requirementImages[key];
+                image.src = isValid ? 'check.png' : 'close.png';
+                element.classList.toggle('valid', isValid);
             }
+        });
+        
+        createAccountForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const passwordValue = passwordInput.value;
+            const requirements = {
+                'length': passwordValue.length >= 8 && passwordValue.length <= 16,
+                'lowercase': /[a-z]/.test(passwordValue),
+                'uppercase': /[A-Z]/.test(passwordValue),
+                'special': /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue)
+            };
+            const requiredFields = document.querySelectorAll('input[required]');
+            let isEmpty = false;
+            
+            requiredFields.forEach(field => {
+                if (field.value.trim() === '') {
+                    field.classList.add('invalid');
+                    isEmpty = true;
+                } else {
+                    field.classList.remove('invalid');
+                }
+            });
         });
     </script>
 </body>

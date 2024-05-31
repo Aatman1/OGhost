@@ -1,235 +1,235 @@
-/* // <uniquifier>: Use a unique and descriptive class name */
-/* // <weight>: Use a value from 100 to 900 */
-
-.inter-login-container {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-variation-settings:  "slnt" 0;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     display: flex;
-    background-color: white;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    padding: 20px;
-    -webkit-text-size-adjust: 100%;
-  }
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: white;
+}
 
-h1 {
+.container {
     text-align: center;
+    background-color: white;
+    padding: 40px;
+    max-width: 100%;
+    overflow: auto;
 }
 
-.logo-container {
+img[alt="Logo"] {
+    width: 80px;
+    padding: 0;
+}
+
+h2 {
+    font-size: 40px;
+    padding-bottom: 40px;
+    margin: 0;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;  /* Center horizontally */
-    align-items: center;      /* Center vertically */
-    height: 100%;            /* Full viewport height, adjust as needed */
+    align-items: flex-end;
 }
 
-.logo {
-    max-width: 30%;          /* Ensure the logo resizes responsively */
-    height: auto;             /* Maintain aspect ratio */
+.input-group input.empty {
+    border-color: red; /* Override border color for empty fields */
+}
+
+.input-group input.invalid {
+    border-color: red;
+}
+
+input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    transition: 0.1s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+    outline: none;
+    border-color: #563bff;
+}
+
+.placeholder {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.placeholder.floating {
+    top: -8px;
+    left: 5px;
+    color: #999;
+    font-size: 12px;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle img {
+    height: 20px;
+    align-self: flex-end;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #563bff;
+    color: white;
+    border-color: #563bff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0010c3;
+    border-color: #0010c3;
+}
+
+.alternate-options button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    transition: 0.3s;
+    text-align: left; /* Align text to the left */
+}
+
+.alternate-options button:hover {
+    background-color: #ccc;
+    transition: 0.3;
+}
+
+.alternate-options button img {
+    width: 30px;
+}
+
+.alternate-options button .icon-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.alternate-options button span {
+    margin-left: 10px; /* Add spacing between image and text */
+}
+
+p {
+    width: 360px;
 }
 
 a {
-    font-weight: bold;
-    text-decoration: none;
-    transition: font-weight 0.2s ease, text-decoration 0.2s ease;
-}
-
-a:hover {
-    text-decoration: underline;
-    transition: font-weight 0.2s ease, text-decoration 0.2s ease;
-}
-
-.login-container {
-
-    max-width: 320px;
-    justify-content: left;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    display: inline-flexbox;
-    flex-basis: content;
-    height: fit-content;
-}
-
-.login-form {
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
-.login-form h1 {
-    margin-bottom: 20px;
-}
-
-.social-login {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding-left: 20%;
-    padding-right: 20%;
-}
-
-.social-btn {
-    border: none;
-    border-radius: 15%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    cursor: pointer;
-    margin-right: 5px; /* Adjusted margin to bringbox buttons closer */
-    transition: font-size 0.1s ease;
-}
-.social-btn:hover {
-    font-size: 35px;
-    transition: font-size 0.1s ease;
-}
-
-.graphic-container {
-    width: 40%;
-}
-
-.graphic {
-    height: auto;
-    object-fit: cover;
-    border-radius: 9px;
-}
-
-.social-btn:last-child {
-    margin-right: 0; /* Remove margin for the last button */
-}
-
-.social-btn.google {
-    background-color: #db4437;
-    color: white;
-}
-
-.social-btn.linkedin {
-    background-color: #0077b5;
-    color: white;
-}
-
-.social-btn.microsoft {
-    background-color: #00a4ef;
-    color: white;
-}
-
-h3 {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #1538ff6e; 
-    line-height: 0.1em;
-    margin: 10px 0 20px; 
- } 
- 
- h3 span { 
-    color: #1538ff6e;
-     background:white; 
-     padding:0 10px; 
- }
-
-.phone-container {
-    display: flex;
-}
-
-.input-style:focus:active {
-    border-color: #2b4aff; /* change the border color to #2b4aff when the input field is both focused and active */
-    transition: border-color 0.5s ease;
-  }
-
-.phone-container select {
-    width: 100%;
-    flex-direction: column;
-    border-width: 2px;
-    border-color: #563bff;
-    border-radius: 5px;
-}
-
-.input-style {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.login-form {
-    padding: 0%;
-}
-
-.login-form input {
-    width: calc(100% - 20px);
-    margin: 10px 0;
-    padding: 10px;
-    padding-left: 5px;
-    padding: right 5px;
-    border-width: 2px;
-    border-color: #563bff;
-    border-radius: 5px;
-}
-
-.Nation-Code{
-    max-width: 35%;
-    height: inherit;
-    text-overflow: clip;
-    margin: 10px 0;
-    padding: 9px;
-    border-width: 2px;
-    border-color: #563bff;
-    border-radius: 5px;
-}
-
-.login-header {
-    max-width: 100%; /* Adjust as needed */
-    height: auto;
-    align-items: center;
-}
-
-.login-header h1 {
-    justify-items: center;
-    white-space: nowrap;
-}
-
-.forgot-password {
-    display: block;
-    text-align: right;
-    margin-bottom: 20px;
     color: #563bff;
     text-decoration: none;
 }
 
-.sign-in-btn {
+h3 {
     width: 100%;
-    padding: 10px;
-    font-family: 'Inter', sans-serif;
-    background-color: #563bff;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
+    text-align: center;
+    border-bottom: 1px solid #1538ff6e;
+    line-height: 0.1em;
+    margin: 30px 0 30px;
 }
 
-.sign-in-btn:hover {
-    background-color: #2b4aff;
-    transition: background-color 0.5s ease;
+h3 span {
+    color: #1538ff6e;
+    background: white;
+    padding: 0 10px;
 }
 
-.agree-text {
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #666;
+}
+
+.phone-input-group {
     display: flex;
+    align-items: center;
+    gap: 2px;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.phone-input input[type="tel"] {
+    width: 270px;
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: 0.3s;
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #563bff;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.valid {
+    color: green;
+}
+
+#passwordAuthStatement img {
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.input-group input.invalid {
+    border-color: red;
 }
