@@ -30,6 +30,8 @@
         .input-group {
             position: relative;
             margin-bottom: 20px;
+            display: flex;
+            align-items: flex-end;
         }
         input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
             padding: 10px;
@@ -50,18 +52,9 @@
             color: #999;
             pointer-events: none;
             transition: 0.3s;
-        }
-        #phoneNumber ~ .placeholder {
-            right: 10px; /* Adjusted position to the right */
-            top: 10px;
-            color: #999;
-            pointer-events: none;
-            transition: 0.3s;
-        }        
+        }     
         input[type="text"]:focus ~ .placeholder,
         input[type="text"]:not(:placeholder-shown) ~ .placeholder,
-        input[type="tel"]:focus ~ .placeholder,
-        input[type="tel"]:not(:placeholder-shown) ~ .placeholder,
         input[type="password"]:focus ~ .placeholder,
         input[type="password"]:not(:placeholder-shown) ~ .placeholder,
         input[type="email"]:focus ~ .placeholder,
@@ -73,11 +66,23 @@
             background-color: white;
             padding: 0 5px;
         }
+        input[type="tel"]:focus ~ .placeholder{
+            top: -18px;
+            left: 5px;
+            color: #999;
+            font-size: 12px;
+            background-color: white;
+            padding: 0 5px;
+        }
+        input[type="tel"]:not(:placeholder-shown) ~ .placeholder{
+            color: #999;
+            padding: 0 5px;
+        }
         button {
             padding: 10px 20px;
             background-color: #563bff;
             color: white;
-            border: none;
+            border-color: #563bff;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
@@ -115,6 +120,18 @@
             color: #563bff;
             text-decoration: none;
         }
+        h3 {
+            width: 100%; 
+            text-align: center; 
+            border-bottom: 1px solid #1538ff6e; 
+            line-height: 0.1em;
+            margin: 10px 0 20px; 
+         } 
+        h3 span { 
+            color: #1538ff6e;
+            background:white; 
+            padding:0 10px; 
+        }
         footer {
             margin-top: 20px;
             font-size: 12px;
@@ -124,6 +141,9 @@
             display: flex;
             align-items: center;
             gap: 2px; /* Space between the select and input */
+        }
+        .phone-input {
+            flex: 1; /* Make the input field take up the remaining space */
         }
         select {
             padding: 10px;
@@ -148,12 +168,12 @@
 <body>
     <div class="container">
         <img src="OG_logo.png" alt="Logo">
-        <h2>Create an account</h2>
+        <h2>Create your account</h2>
         <div class="input-group">
             <input type="text" id="fullName" placeholder=" " required>
             <span class="placeholder">Full Name</span>
         </div>
-        <div class="input-group phone-input-group">
+        <div class="phone-input-group">
             <select id="countryCode" required>
                 <option value="+91" data-full-name="India">IN</option>
                 <option value="+1" data-full-name="United States">US</option>
@@ -324,12 +344,10 @@
                 <option value="+260" data-full-name="Zambia">ZM</option>
                 <option value="+263" data-full-name="Zimbabwe">ZW</option> 
             </select>
-            <input
-                type="tel"
-                id="phoneNumber"
-                required
-            />
-            <span class="placeholder">Phone Number</span>
+            <div class="input-group">
+                <input  type="tel" id="phoneNumber" required>
+                <label class="placeholder">Phone Number</label>
+            </div>
         </div>
         <div class="input-group">
             <input type="email" id="email" placeholder=" " required>
@@ -340,6 +358,7 @@
             <span class="placeholder">Password</span>
         </div>
         <button type="submit">Create Account</button>
+        <h3><span>or</span></h3>
         <div class="alternate-options">
             <button type="button"><img src="google-icon.png" alt="Google">Sign up with Google</button>
             <button type="button"><img src="apple-icon.png" alt="Apple">Sign up with Apple</button>
