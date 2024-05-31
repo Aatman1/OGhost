@@ -97,7 +97,8 @@
             justify-content: center;
         }
         .password-toggle img {
-            width: 20px;
+            height: 20px;
+            margin-bottom: 15px;
         }
         button {
             padding: 10px 20px;
@@ -109,6 +110,7 @@
             font-size: 16px;
             width: 100%;
             transition: 0.3s;
+            margin-top: 10px;
         }
         button:hover {
             background-color: #0010c3;
@@ -147,7 +149,7 @@
             text-align: center; 
             border-bottom: 1px solid #1538ff6e; 
             line-height: 0.1em;
-            margin: 10px 0 20px; 
+            margin: 30px 0 30px; 
         } 
         h3 span { 
             color: #1538ff6e;
@@ -186,16 +188,21 @@
         .hidden {
             display: none;
         }
+        .passAuth{
+            border-color: #ccc;
+        }
         .error {
             color: red;
             font-size: 14px;
             text-align: left;
-            list-style-type: "𐄂 ";
+            list-style-type: "✘  ";
+            margin-bottom: 20px;
+            margin-top: 0px;
         }
         .valid {
             color: green;
             margin-top: 7px;
-            list-style-type: '✔'; /* Change bullet list symbol */
+            list-style-type: "✔  "; /* Change bullet list symbol */
         }
     </style>
 </head>
@@ -205,8 +212,8 @@
         <h2>Create your account</h2>
         <form id="createAccountForm">
             <div class="input-group">
-                <input type="text" id="fullName" placeholder=" " required aria-label="Full Name">
-                <span class="placeholder">Full Name</span>
+                <input type="text" id="userName" placeholder=" " required aria-label="User Name">
+                <span class="placeholder">Username</span>
             </div>
             <div class="phone-input-group">
                 <select id="countryCode" required>
@@ -394,12 +401,14 @@
                     <img src="icons8-eye-48.png" alt="Toggle Password Visibility">
                 </button>
             </div>
-            <ul id="passwordAuthStatement" class="error hidden">
-                <li id="length">Must be 8-16 characters long</li>
-                <li id="lowercase">Must contain at least 1 lowercase letter</li>
-                <li id="uppercase">Must contain at least 1 uppercase letter</li>
-                <li id="special">Must contain at least 1 special character</li>
-            </ul>
+            <div class="passAuth">
+                <ul id="passwordAuthStatement" class="error hidden">
+                    <li id="length">Must be 8-16 characters long</li>
+                    <li id="lowercase">Must contain at least 1 lowercase letter</li>
+                    <li id="uppercase">Must contain at least 1 uppercase letter</li>
+                    <li id="special">Must contain at least 1 special character</li>
+                </ul>
+            </div>
             <button type="submit">Create Account</button>
             <p>By creating an account, you agree to OfferGhost's 
                 <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a> , 
@@ -412,7 +421,7 @@
             <button type="button"><img src="LinkedIn_logo_initials.png" alt="LinkedIn">Sign up with LinkedIn</button>
             <button type="button"><img src="Microsoft_logo.png" alt="Microsoft">Sign up with Microsoft</button>
         </div>
-        <p>Already have an account? <a href="#">Sign in</a></p>
+        <p>Already have an account? <a href="signin.html">Sign in</a></p>
     </div>
     <div id="verification-container" class="hidden">
         <h2>Enter the verification code sent to your phone</h2>
