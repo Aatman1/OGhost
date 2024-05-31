@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
     <style>
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             display: flex;
@@ -19,15 +18,15 @@
             text-align: center;
             background-color: white;
             padding: 40px;
-            border-radius: 8px;
         }
         img[alt="Logo"] {
             width: 80px;
-            margin-bottom: 20px;
+            padding: 0;
         }
         h2 {
-            margin-bottom: 20px;
             font-size: 40px;
+            padding-bottom: 40px;
+            margin: 0;
         }
         .input-group {
             position: relative;
@@ -60,7 +59,7 @@
         input[type="password"]:focus ~ .placeholder,
         input[type="password"]:not(:placeholder-shown) ~ .placeholder,
         input[type="email"]:focus ~ .placeholder,
-        input[type="email"]:not(:placeholder-shown) ~ .placeholder {
+        input[type="email"]:not(:placeholder-shown) ~ .placeholder{
             top: -8px;
             left: 5px;
             color: #999;
@@ -80,6 +79,26 @@
             color: #999;
             padding: 0 5px;
         }
+        .password-group {
+            position: relative;
+        }
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .password-toggle img {
+            width: 20px;
+        }
         button {
             padding: 10px 20px;
             background-color: #563bff;
@@ -89,12 +108,11 @@
             cursor: pointer;
             font-size: 16px;
             width: 100%;
-            margin-bottom: 20px;
             transition: 0.3s;
-        }button:hover {
+        }
+        button:hover {
             background-color: #0010c3;
             border-color: #0010c3;
-            transition: 0.3s;
         }
         .alternate-options button {
             display: block;
@@ -117,7 +135,8 @@
             margin-top: 20px;
         }
         p {
-            margin: 10px 0;
+            width: 360px;
+
         }
         a {
             color: #563bff;
@@ -129,26 +148,27 @@
             border-bottom: 1px solid #1538ff6e; 
             line-height: 0.1em;
             margin: 10px 0 20px; 
-         } 
+        } 
         h3 span { 
             color: #1538ff6e;
-            background:white; 
-            padding:0 10px; 
+            background: white; 
+            padding: 0 10px; 
         }
         footer {
             margin-top: 20px;
             font-size: 12px;
             color: #666;
-        }.phone-input-group {
+        }
+        .phone-input-group {
             display: flex;
             align-items: center;
             gap: 2px;
             justify-content: center;
-            width: fit-content; /* Add this line */
-            margin: 0 auto; /* Add this line */
-        }        
+            width: fit-content;
+            margin: 0 auto;
+        }
         .phone-input input[type="tel"] {
-            width: 270px; /* Adjust this value as needed */
+            width: 270px;
         }
         select {
             padding: 10px;
@@ -163,11 +183,20 @@
             outline: none;
             border-color: #563bff;
         }
-        .auth-buttons {
-            margin-top: 10px;
-        }
         .hidden {
             display: none;
+            transition: ease;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            text-align: left;
+            list-style-type: "𐄂 ";
+        }
+        .valid {
+            color: green;
+            margin-top: 7px;
+            list-style-type: '✔'; /* Change bullet list symbol */
         }
     </style>
 </head>
@@ -175,266 +204,112 @@
     <div class="container">
         <img src="OG_logo.png" alt="Logo">
         <h2>Create your account</h2>
-        <div class="input-group">
-            <input type="text" id="fullName" placeholder=" " required>
-            <span class="placeholder">Full Name</span>
-        </div>
-        <div class="phone-input-group">
-            <select id="countryCode" required>
-                <option value="+91" data-full-name="India">IN</option>
-                <option value="+1" data-full-name="United States">US</option>
-                <option value="+44" data-full-name="United Kingdom">UK</option>
-                <option value="+61" data-full-name="Australia">AU</option>
-                <option value="+81" data-full-name="Japan">JP</option>
-                <option value="+49" data-full-name="Germany">DE</option>
-                <option value="+33" data-full-name="France">FR</option>
-                <option value="+39" data-full-name="Italy">IT</option>
-                <option value="+86" data-full-name="China">CN</option>
-                <option value="+7" data-full-name="Russia">RU</option>
-                <option value="+55" data-full-name="Brazil">BR</option>
-                <option value="+27" data-full-name="South Africa">ZA</option>
-                <option value="+34" data-full-name="Spain">ES</option>
-                <option value="+82" data-full-name="South Korea">KR</option>
-                <option value="+46" data-full-name="Sweden">SE</option>
-                <option value="+31" data-full-name="Netherlands">NL</option>
-                <option value="+34" data-full-name="Spain">ES</option>
-                <option value="+47" data-full-name="Norway">NO</option>
-                <option value="+45" data-full-name="Denmark">DK</option>
-                <option value="+48" data-full-name="Poland">PL</option>
-                <option value="+52" data-full-name="Mexico">MX</option>
-                <option value="+41" data-full-name="Switzerland">CH</option>
-                <option value="+351" data-full-name="Portugal">PT</option>
-                <option value="+66" data-full-name="Thailand">TH</option>
-                <option value="+90" data-full-name="Turkey">TR</option>
-                <option value="+60" data-full-name="Malaysia">MY</option>
-                <option value="+65" data-full-name="Singapore">SG</option>
-                <option value="+62" data-full-name="Indonesia">ID</option>
-                <option value="+63" data-full-name="Philippines">PH</option>
-                <option value="+92" data-full-name="Pakistan">PK</option>
-                <option value="+964" data-full-name="Iraq">IQ</option>
-                <option value="+98" data-full-name="Iran">IR</option>
-                <option value="+213" data-full-name="Algeria">DZ</option>
-                <option value="+54" data-full-name="Argentina">AR</option>
-                <option value="+61" data-full-name="Australia">AU</option>
-                <option value="+43" data-full-name="Austria">AT</option>
-                <option value="+973" data-full-name="Bahrain">BH</option>
-                <option value="+880" data-full-name="Bangladesh">BD</option>
-                <option value="+32" data-full-name="Belgium">BE</option>
-                <option value="+591" data-full-name="Bolivia">BO</option>
-                <option value="+267" data-full-name="Botswana">BW</option>
-                <option value="+359" data-full-name="Bulgaria">BG</option>
-                <option value="+855" data-full-name="Cambodia">KH</option>
-                <option value="+237" data-full-name="Cameroon">CM</option>
-                <option value="+1" data-full-name="Canada">CA</option>
-                <option value="+56" data-full-name="Chile">CL</option>
-                <option value="+57" data-full-name="Colombia">CO</option>
-                <option value="+506" data-full-name="Costa Rica">CR</option>
-                <option value="+385" data-full-name="Croatia">HR</option>
-                <option value="+53" data-full-name="Cuba">CU</option>
-                <option value="+357" data-full-name="Cyprus">CY</option>
-                <option value="+420" data-full-name="Czech Republic">CZ</option>
-                <option value="+253" data-full-name="Djibouti">DJ</option>
-                <option value="+593" data-full-name="Ecuador">EC</option>
-                <option value="+20" data-full-name="Egypt">EG</option>
-                <option value="+503" data-full-name="El Salvador">SV</option>
-                <option value="+372" data-full-name="Estonia">EE</option>
-                <option value="+251" data-full-name="Ethiopia">ET</option>
-                <option value="+679" data-full-name="Fiji">FJ</option>
-                <option value="+358" data-full-name="Finland">FI</option>
-                <option value="+220" data-full-name="Gambia">GM</option>
-                <option value="+995" data-full-name="Georgia">GE</option>
-                <option value="+233" data-full-name="Ghana">GH</option>
-                <option value="+30" data-full-name="Greece">GR</option>
-                <option value="+502" data-full-name="Guatemala">GT</option>
-                <option value="+224" data-full-name="Guinea">GN</option>
-                <option value="+509" data-full-name="Haiti">HT</option>
-                <option value="+504" data-full-name="Honduras">HN</option>
-                <option value="+36" data-full-name="Hungary">HU</option>
-                <option value="+354" data-full-name="Iceland">IS</option>
-                <option value="+62" data-full-name="Indonesia">ID</option>
-                <option value="+98" data-full-name="Iran">IR</option>
-                <option value="+964" data-full-name="Iraq">IQ</option>
-                <option value="+353" data-full-name="Ireland">IE</option>
-                <option value="+972" data-full-name="Israel">IL</option>
-                <option value="+225" data-full-name="Ivory Coast">CI</option>
-                <option value="+962" data-full-name="Jordan">JO</option>
-                <option value="+7" data-full-name="Kazakhstan">KZ</option>
-                <option value="+254" data-full-name="Kenya">KE</option>
-                <option value="+965" data-full-name="Kuwait">KW</option>
-                <option value="+996" data-full-name="Kyrgyzstan">KG</option>
-                <option value="+856" data-full-name="Laos">LA</option>
-                <option value="+371" data-full-name="Latvia">LV</option>
-                <option value="+961" data-full-name="Lebanon">LB</option>
-                <option value="+231" data-full-name="Liberia">LR</option>
-                <option value="+218" data-full-name="Libya">LY</option>
-                <option value="+423" data-full-name="Liechtenstein">LI</option>
-                <option value="+370" data-full-name="Lithuania">LT</option>
-                <option value="+352" data-full-name="Luxembourg">LU</option>
-                <option value="+853" data-full-name="Macau">MO</option>
-                <option value="+389" data-full-name="Macedonia">MK</option>
-                <option value="+261" data-full-name="Madagascar">MG</option>
-                <option value="+265" data-full-name="Malawi">MW</option>
-                <option value="+60" data-full-name="Malaysia">MY</option>
-                <option value="+960" data-full-name="Maldives">MV</option>
-                <option value="+223" data-full-name="Mali">ML</option>
-                <option value="+356" data-full-name="Malta">MT</option>
-                <option value="+222" data-full-name="Mauritania">MR</option>
-                <option value="+230" data-full-name="Mauritius">MU</option>
-                <option value="+52" data-full-name="Mexico">MX</option>
-                <option value="+373" data-full-name="Moldova">MD</option>
-                <option value="+377" data-full-name="Monaco">MC</option>
-                <option value="+976" data-full-name="Mongolia">MN</option>
-                <option value="+382" data-full-name="Montenegro">ME</option>
-                <option value="+212" data-full-name="Morocco">MA</option>
-                <option value="+258" data-full-name="Mozambique">MZ</option>
-                <option value="+95" data-full-name="Myanmar">MM</option>
-                <option value="+264" data-full-name="Namibia">NA</option>
-                <option value="+977" data-full-name="Nepal">NP</option>
-                <option value="+31" data-full-name="Netherlands">NL</option>
-                <option value="+64" data-full-name="New Zealand">NZ</option>
-                <option value="+505" data-full-name="Nicaragua">NI</option>
-                <option value="+227" data-full-name="Niger">NE</option>
-                <option value="+234" data-full-name="Nigeria">NG</option>
-                <option value="+47" data-full-name="Norway">NO</option>
-                <option value="+968" data-full-name="Oman">OM</option>
-                <option value="+92" data-full-name="Pakistan">PK</option>
-                <option value="+507" data-full-name="Panama">PA</option>
-                <option value="+675" data-full-name="Papua New Guinea">PG</option>
-                <option value="+595" data-full-name="Paraguay">PY</option>
-                <option value="+51" data-full-name="Peru">PE</option>
-                <option value="+63" data-full-name="Philippines">PH</option>
-                <option value="+48" data-full-name="Poland">PL</option>
-                <option value="+351" data-full-name="Portugal">PT</option>
-                <option value="+974" data-full-name="Qatar">QA</option>
-                <option value="+40" data-full-name="Romania">RO</option>
-                <option value="+7" data-full-name="Russia">RU</option>
-                <option value="+250" data-full-name="Rwanda">RW</option>
-                <option value="+966" data-full-name="Saudi Arabia">SA</option>
-                <option value="+221" data-full-name="Senegal">SN</option>
-                <option value="+381" data-full-name="Serbia">RS</option>
-                <option value="+248" data-full-name="Seychelles">SC</option>
-                <option value="+232" data-full-name="Sierra Leone">SL</option>
-                <option value="+65" data-full-name="Singapore">SG</option>
-                <option value="+421" data-full-name="Slovakia">SK</option>
-                <option value="+386" data-full-name="Slovenia">SI</option>
-                <option value="+27" data-full-name="South Africa">ZA</option>
-                <option value="+82" data-full-name="South Korea">KR</option>
-                <option value="+34" data-full-name="Spain">ES</option>
-                <option value="+94" data-full-name="Sri Lanka">LK</option>
-                <option value="+249" data-full-name="Sudan">SD</option>
-                <option value="+597" data-full-name="Suriname">SR</option>
-                <option value="+268" data-full-name="Swaziland">SZ</option>
-                <option value="+46" data-full-name="Sweden">SE</option>
-                <option value="+41" data-full-name="Switzerland">CH</option>
-                <option value="+963" data-full-name="Syria">SY</option>
-                <option value="+886" data-full-name="Taiwan">TW</option>
-                <option value="+992" data-full-name="Tajikistan">TJ</option>
-                <option value="+255" data-full-name="Tanzania">TZ</option>
-                <option value="+66" data-full-name="Thailand">TH</option>
-                <option value="+228" data-full-name="Togo">TG</option>
-                <option value="+676" data-full-name="Tonga">TO</option>
-                <option value="+216" data-full-name="Tunisia">TN</option>
-                <option value="+90" data-full-name="Turkey">TR</option>
-                <option value="+993" data-full-name="Turkmenistan">TM</option>
-                <option value="+256" data-full-name="Uganda">UG</option>
-                <option value="+380" data-full-name="Ukraine">UA</option>
-                <option value="+971" data-full-name="United Arab Emirates">AE</option>
-                <option value="+44" data-full-name="United Kingdom">UK</option>
-                <option value="+1" data-full-name="United States">US</option>
-                <option value="+598" data-full-name="Uruguay">UY</option>
-                <option value="+998" data-full-name="Uzbekistan">UZ</option>
-                <option value="+678" data-full-name="Vanuatu">VU</option>
-                <option value="+58" data-full-name="Venezuela">VE</option>
-                <option value="+84" data-full-name="Vietnam">VN</option>
-                <option value="+967" data-full-name="Yemen">YE</option>
-                <option value="+260" data-full-name="Zambia">ZM</option>
-                <option value="+263" data-full-name="Zimbabwe">ZW</option> 
-            </select>
-            <div class="input-group phone-input">
-                <input  type="tel" id="phoneNumber" required>
-                <label class="placeholder">Phone Number</label>
+        <form id="createAccountForm">
+            <div class="input-group">
+                <input type="text" id="fullName" placeholder=" " required aria-label="Full Name">
+                <span class="placeholder">Full Name</span>
             </div>
-        </div>
-        <div class="input-group">
-            <input type="email" id="email" placeholder=" " required>
-            <span class="placeholder">Email</span>
-        </div>
-        <div class="input-group">
-            <input type="password" id="password" placeholder=" " required>
-            <span class="placeholder">Password</span>
-        </div>
-        <button type="submit">Create Account</button>
+            <div class="phone-input-group">
+                <select id="countryCode" required aria-label="Country Code">
+                    <option value="+91" data-full-name="India">IN</option>
+                    <option value="+1" data-full-name="United States">US</option>
+                    <!-- Add other country options here -->
+                </select>
+                <div class="input-group phone-input">
+                    <input type="tel" id="phoneNumber" required aria-label="Phone Number">
+                    <span class="placeholder">Phone Number</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" placeholder=" " required aria-label="Email">
+                <span class="placeholder">Email</span>
+            </div>
+            <div class="input-group password-group">
+                <input type="password" id="password" placeholder=" " required aria-label="Password">
+                <span class="placeholder">Password</span>
+                <button type="button" class="password-toggle" style="background-color: transparent;">
+                    <img src="icons8-eye-48.png" alt="Toggle Password Visibility">
+                </button>
+            </div>
+            <ul id="passwordAuthStatement" class="error hidden">
+                <li id="length">Must be 8-16 characters long</li>
+                <li id="lowercase">Must contain at least 1 lowercase letter</li>
+                <li id="uppercase">Must contain at least 1 uppercase letter</li>
+                <li id="special">Must contain at least 1 special character</li>
+            </ul>
+            <button type="submit">Create Account</button>
+            <p>By creating an account, you agree to OfferGhost's 
+                <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a> , 
+                <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> , and 
+                <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a>.</p>
+        </form>
         <h3><span>or</span></h3>
         <div class="alternate-options">
             <button type="button"><img src="Google_logo.png" alt="Google">Sign up with Google</button>
             <button type="button"><img src="LinkedIn_logo_initials.png" alt="LinkedIn">Sign up with LinkedIn</button>
             <button type="button"><img src="Microsoft_logo.png" alt="Microsoft">Sign up with Microsoft</button>
         </div>
-        <p>Already have an account? <a href="#">Sign in</a></p>
+        <p>Already have an account? <a href="signin.html">Sign in</a></p>
     </div>
     <div id="verification-container" class="hidden">
         <h2>Enter the verification code sent to your phone</h2>
         <form id="verification-form">
-            <input type="text" id="verification-code" placeholder=" " required />
+            <input type="text" id="verification-code" placeholder=" " required aria-label="Verification Code">
             <button id="submit-verification" type="submit">Submit</button>
         </form>
     </div>
     <script>
-        // JavaScript code for additional functionality
-        const continueBtn = document.getElementById('continue');
         const passwordInput = document.getElementById('password');
-        const passwordInfo = document.querySelector('.password-info');
+        const passwordToggle = document.querySelector('.password-toggle');
+        const createAccountForm = document.getElementById('createAccountForm');
+        const verificationContainer = document.getElementById('verification-container');
+        const passwordAuthStatement = document.getElementById('passwordAuthStatement');
+
+        passwordToggle.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+        });
 
         passwordInput.addEventListener('input', () => {
-            passwordInfo.classList.add('show');
-        });
-
-        continueBtn.addEventListener('click', () => {
-            const passwordValue = passwordInput.value;
-            if (passwordValue.length >= 12) {
-                // Proceed with account creation
-                console.log('Account created successfully!');
-            } else {
-                alert('Password must be at least 12 characters long.');
-            }
-        });
-
-        // Add event listener to the select field
-        document.getElementById('countryCode').addEventListener('mouseover', function(event) {
-            // Show the full country name on hover
-            var option = event.target;
-            var fullName = option.getAttribute('data-full-name');
-            option.title = fullName;
-        });
-
-        // Get all input fields on the page
-        var inputFields = document.getElementsByTagName('input');
-
-        // Loop through each input field
-        for (var i = 0; i < inputFields.length; i++) {
-            // Add an event listener to the input field
-            inputFields[i].addEventListener('input', function(event) {
-                // Log the value of the input field to the console
-                console.log(event.target.value);
-            });
-        }
-
-        const passwordAuthStatement = document.getElementById("passwordAuthStatement");
-
-        passwordInput.addEventListener("input", () => {
+            passwordAuthStatement.classList.remove('hidden');
             const password = passwordInput.value;
             const hasLowercase = /[a-z]/.test(password);
             const hasUppercase = /[A-Z]/.test(password);
             const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
             const isValidLength = password.length >= 8 && password.length <= 16;
 
-            if (hasLowercase && hasUppercase && hasSpecialChar && isValidLength) {
-                passwordAuthStatement.style.color = "green";
-                passwordAuthStatement.textContent = "Password is valid.";
+            document.getElementById('length').style.color = isValidLength ? 'green' : 'red';
+            document.getElementById('lowercase').style.color = hasLowercase ? 'green' : 'red';
+            document.getElementById('uppercase').style.color = hasUppercase ? 'green' : 'red';
+            document.getElementById('special').style.color = hasSpecialChar ? 'green' : 'red';
+
+            document.getElementById('length').classList.toggle('valid', isValidLength);
+            document.getElementById('lowercase').classList.toggle('valid', hasLowercase);
+            document.getElementById('uppercase').classList.toggle('valid', hasUppercase);
+            document.getElementById('special').classList.toggle('valid', hasSpecialChar);
+        });
+
+        createAccountForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const passwordValue = passwordInput.value;
+            const hasLowercase = /[a-z]/.test(passwordValue);
+            const hasUppercase = /[A-Z]/.test(passwordValue);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue);
+            const isValidLength = passwordValue.length >= 8 && passwordValue.length <= 16;
+
+            if (isValidLength && hasLowercase && hasUppercase && hasSpecialChar) {
+                console.log('Account created successfully!');
+                verificationContainer.classList.remove('hidden');
+                document.querySelector('.container').classList.add('hidden');
             } else {
-                passwordAuthStatement.style.color = "red";
-                passwordAuthStatement.textContent = "Must be 8-16 characters long, contain at least 1 lowercase, 1 uppercase, and 1 special character.";
+                alert('Please ensure the password meets all the requirements.');
             }
+        });
+
+        document.getElementById('countryCode').addEventListener('mouseover', (event) => {
+            const option = event.target;
+            const fullName = option.getAttribute('data-full-name');
+            option.title = fullName;
         });
     </script>
 </body>
