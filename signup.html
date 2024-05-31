@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
     <style>
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -14,118 +15,159 @@
             margin: 0;
             background-color: white;
         }
-        img {
-            width: 130px;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        #countryCode {
-            width: 80px; /* fixed width */
-        }
-        
-        #countryCode option {
-            position: relative;
-        }
-        
-        #countryCode option::after {
-            content: attr(data-full-name);
-            position: absolute;
-            left: 100%;
-            top: 0;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 5px;
-            display: none;
-        }
-        
-        #countryCode option:hover::after {
-            display: block;
-        }
-       .container {
+        .container {
             text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
         }
-       .input-group {
-            position: relative;
+        img {
+            width: 80px;
             margin-bottom: 20px;
         }
-        input[type="text"], input[type="password"] {
+        h2 {
+            margin-bottom: 20px;
+            font-size: 40px;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-end;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            width: 250px;
+            width: 100%;
             font-size: 16px;
-            transition: 0.3s;
+            transition: 0.1s;
         }
-        input[type="text"]:focus, input[type="password"]:focus {
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
             outline: none;
             border-color: #563bff;
         }
-       .placeholder {
+        .placeholder {
             position: absolute;
             left: 10px;
             top: 10px;
             color: #999;
             pointer-events: none;
             transition: 0.3s;
-        }
-        input[type="text"]:focus ~.placeholder,
-        input[type="text"]:not(:placeholder-shown) ~.placeholder,
-        input[type="tel"]:focus ~.placeholder,
-        input[type="tel"]:not(:placeholder-shown) ~.placeholder,
-        input[type="password"]:focus ~.placeholder,
-        input[type="password"]:not(:placeholder-shown) ~.placeholder {
-            top: -18px;
+        }     
+        input[type="text"]:focus ~ .placeholder,
+        input[type="text"]:not(:placeholder-shown) ~ .placeholder,
+        input[type="password"]:focus ~ .placeholder,
+        input[type="password"]:not(:placeholder-shown) ~ .placeholder,
+        input[type="email"]:focus ~ .placeholder,
+        input[type="email"]:not(:placeholder-shown) ~ .placeholder {
+            top: -8px;
             left: 5px;
             color: #999;
             font-size: 12px;
             background-color: white;
             padding: 0 5px;
         }
-
+        input[type="tel"]:focus ~ .placeholder{
+            top: -8px;
+            left: 5px;
+            color: #999;
+            font-size: 12px;
+            background-color: white;
+            padding: 0 5px;
+        }
+        input[type="tel"]:not(:placeholder-shown) ~ .placeholder{
+            color: #999;
+            padding: 0 5px;
+        }
         button {
             padding: 10px 20px;
             background-color: #563bff;
             color: white;
-            border: none;
+            border-color: #563bff;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 20px;
             width: 100%;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }button:hover {
+            background-color: #0010c3;
+            border-color: #0010c3;
+            transition: 0.3s;
         }
-       .password-info {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
-            display: none;
-        }
-       .password-info.show {
+        .alternate-options button {
             display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+        .alternate-options button:hover {
+            background-color: #f2f2f2;
+        }
+        .alternate-options button img {
+            width: 20px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .alternate-options {
+            margin-top: 20px;
+        }
+        p {
+            margin: 10px 0;
         }
         a {
             color: #563bff;
             text-decoration: none;
         }
-        p {
-            margin: 5px 0;
+        h3 {
+            width: 100%; 
+            text-align: center; 
+            border-bottom: 1px solid #1538ff6e; 
+            line-height: 0.1em;
+            margin: 10px 0 20px; 
+         } 
+        h3 span { 
+            color: #1538ff6e;
+            background:white; 
+            padding:0 10px; 
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }.phone-input-group {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            justify-content: center;
+            width: fit-content; /* Add this line */
+            margin: 0 auto; /* Add this line */
+        }        
+        .phone-input input[type="tel"] {
+            width: 270px; /* Adjust this value as needed */
         }
         select {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            width: 80px;
             font-size: 16px;
             transition: 0.3s;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
+            width: 80px;
+            margin-bottom: 20px;
         }
         select:focus {
             outline: none;
             border-color: #563bff;
+        }
+        .auth-buttons {
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -134,7 +176,11 @@
         <img src="OG_logo.png" alt="Logo">
         <h2>Create your account</h2>
         <div class="input-group">
-            <select id="countryCode">
+            <input type="text" id="fullName" placeholder=" " required>
+            <span class="placeholder">Full Name</span>
+        </div>
+        <div class="phone-input-group">
+            <select id="countryCode" required>
                 <option value="+91" data-full-name="India">IN</option>
                 <option value="+1" data-full-name="United States">US</option>
                 <option value="+44" data-full-name="United Kingdom">UK</option>
@@ -304,42 +350,44 @@
                 <option value="+260" data-full-name="Zambia">ZM</option>
                 <option value="+263" data-full-name="Zimbabwe">ZW</option> 
             </select>
-            <input type="text" id="phoneNumber" style="margin-left: 82px; width: 168px" maxlength="11" value="" placeholder=" " required>
-            <span class="placeholder" style="left: 90px;">Phone Number</span>
+            <div class="input-group phone-input">
+                <input  type="tel" id="phoneNumber" required>
+                <label class="placeholder">Phone Number</label>
+            </div>
         </div>
         <div class="input-group">
-            <input type="text" id="fullName" value="" placeholder=" " required>
-            <span class="placeholder">Full Name</span>
-        </div>
-        <div class="input-group">
-            <input type="text" id="email" value="" placeholder=" " required>
+            <input type="email" id="email" placeholder=" " required>
             <span class="placeholder">Email</span>
         </div>
         <div class="input-group">
-            <input type="password" id="password" value="" placeholder=" " required>
+            <input type="password" id="password" placeholder=" " required>
             <span class="placeholder">Password</span>
         </div>
-        <div class="password-info">
-            <p>Your password must contain:</p>
-            <ul>
-                <li>At least 12 characters</li>
-            </ul>
+        <button type="submit">Create Account</button>
+        <h3><span>or</span></h3>
+        <div class="alternate-options">
+            <button type="button"><img src="google-icon.png" alt="Google">Sign up with Google</button>
+            <button type="button"><img src="apple-icon.png" alt="Apple">Sign up with Apple</button>
         </div>
-        <button id="continue">Continue</button>
-        <p>Already have an account? <a href="#">Log in</a></p>
-        <p>Terms of Use | Privacy Policy</p>
+        <p>Already have an account? <a href="#">Sign in</a></p>
     </div>
-    
+    <div id="verification-container" class="hidden">
+        <h2>Enter the verification code sent to your phone</h2>
+        <form id="verification-form">
+            <input type="text" id="verification-code" placeholder=" " required />
+            <button id="submit-verification" type="submit">Submit</button>
+        </form>
+    </div>
     <script>
         // JavaScript code for additional functionality
         const continueBtn = document.getElementById('continue');
         const passwordInput = document.getElementById('password');
         const passwordInfo = document.querySelector('.password-info');
-    
+
         passwordInput.addEventListener('input', () => {
             passwordInfo.classList.add('show');
         });
-    
+
         continueBtn.addEventListener('click', () => {
             const passwordValue = passwordInput.value;
             if (passwordValue.length >= 12) {
@@ -349,13 +397,15 @@
                 alert('Password must be at least 12 characters long.');
             }
         });
+
         // Add event listener to the select field
         document.getElementById('countryCode').addEventListener('mouseover', function(event) {
-        // Show the full country name on hover
-        var option = event.target;
-        var fullName = option.getAttribute('data-full-name');
-        option.title = fullName;
+            // Show the full country name on hover
+            var option = event.target;
+            var fullName = option.getAttribute('data-full-name');
+            option.title = fullName;
         });
+
         // Get all input fields on the page
         var inputFields = document.getElementsByTagName('input');
 
@@ -367,6 +417,24 @@
                 console.log(event.target.value);
             });
         }
+
+        const passwordAuthStatement = document.getElementById("passwordAuthStatement");
+
+        passwordInput.addEventListener("input", () => {
+            const password = passwordInput.value;
+            const hasLowercase = /[a-z]/.test(password);
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+            const isValidLength = password.length >= 8 && password.length <= 16;
+
+            if (hasLowercase && hasUppercase && hasSpecialChar && isValidLength) {
+                passwordAuthStatement.style.color = "green";
+                passwordAuthStatement.textContent = "Password is valid.";
+            } else {
+                passwordAuthStatement.style.color = "red";
+                passwordAuthStatement.textContent = "Must be 8-16 characters long, contain at least 1 lowercase, 1 uppercase, and 1 special character.";
+            }
+        });
     </script>
-    </body>
-    </html>
+</body>
+</html>
