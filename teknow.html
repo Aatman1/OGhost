@@ -53,7 +53,16 @@
             color: #999;
             pointer-events: none;
             transition: 0.3s;
-        }     
+        }
+        .placeholder.floating {
+            top: -8px;
+            left: 5px;
+            color: #999;
+            font-size: 12px;
+            background-color: white;
+            padding: 0 5px;
+        }
+     
         input[type="text"]:focus ~ .placeholder,
         input[type="text"]:not(:placeholder-shown) ~ .placeholder,
         input[type="password"]:focus ~ .placeholder,
@@ -98,8 +107,11 @@
         }
         .password-toggle img {
             height: 20px;
-            margin-bottom: 15px;
+            align-self: flex-end;
         }
+        .input-group input.invalid {
+            border-color: red; /* Change to your desired border color */
+        }              
         button {
             padding: 10px 20px;
             background-color: #563bff;
@@ -117,25 +129,33 @@
             border-color: #0010c3;
         }
         .alternate-options button {
-            display: block;
+            display: flex;
+            align-items: center;
             width: 100%;
             margin-bottom: 10px;
             background-color: #fff;
             color: #333;
             border: 1px solid #ccc;
             transition: 0.3s;
+            text-align: left; /* Align text to the left */
         }
         .alternate-options button:hover {
-            background-color: #f2f2f2;
+            background-color: #ccc;
+            transition: 0.3;
         }
         .alternate-options button img {
-            width: 20px;
-            vertical-align: middle;
-            margin-right: 10px;
+            width: 30px;
         }
-        .alternate-options {
-            margin-top: 20px;
+        
+        .alternate-options button .icon-text-container {
+            display: flex;
+            align-items: center;
         }
+        
+        .alternate-options button span {
+            margin-left: 10px; /* Add spacing between image and text */
+        }
+        
         p {
             width: 360px;
 
@@ -188,9 +208,6 @@
         .hidden {
             display: none;
         }
-        .passAuth{
-            border-color: #ccc;
-        }
         .error {
             color: red;
             font-size: 14px;
@@ -210,7 +227,7 @@
     <div class="container">
         <img src="OG_logo.png" alt="Logo">
         <h2>Create your account</h2>
-        <form id="createAccountForm">
+        <form id="createAccountForm" onsubmit="return validateForm()">
             <div class="input-group">
                 <input type="text" id="userName" placeholder=" " required aria-label="User Name">
                 <span class="placeholder">Username</span>
@@ -417,10 +434,25 @@
         </form>
         <h3><span>or</span></h3>
         <div class="alternate-options">
-            <button type="button"><img src="Google_logo.png" alt="Google">Sign up with Google</button>
-            <button type="button"><img src="LinkedIn_logo_initials.png" alt="LinkedIn">Sign up with LinkedIn</button>
-            <button type="button"><img src="Microsoft_logo.png" alt="Microsoft">Sign up with Microsoft</button>
-        </div>
+            <button type="button">
+                <div class="icon-text-container">
+                    <img src="Google_logo.png" alt="Google">
+                    <span>Sign up with Google</span>
+                </div>
+            </button>
+            <button type="button">
+                <div class="icon-text-container">
+                    <img src="LinkedIn_logo_initials.png" alt="LinkedIn">
+                    <span>Sign up with LinkedIn</span>
+                </div>
+            </button>
+            <button type="button">
+                <div class="icon-text-container">
+                    <img src="Microsoft_logo.png" alt="Microsoft">
+                    <span>Sign up with Microsoft</span>
+                </div>
+            </button>
+        </div>        
         <p>Already have an account? <a href="signin.html">Sign in</a></p>
     </div>
     <div id="verification-container" class="hidden">
@@ -436,6 +468,21 @@
         const createAccountForm = document.getElementById('createAccountForm');
         const verificationContainer = document.getElementById('verification-container');
         const passwordAuthStatement = document.getElementById('passwordAuthStatement');
+        const inputTypes = ['text', 'password', 'email', 'tel'];
+
+        inputTypes.forEach(inputType => {
+            const inputField = document.querySelector(`input[type="${inputType}"]`);
+            if (inputField) {
+                inputField.addEventListener('input', () => {
+                    const placeholder = inputField.nextElementSibling;
+                    if (inputField.value.trim() || inputField === document.activeElement) {
+                        placeholder.classList.add('floating');
+                    } else {
+                        placeholder.classList.remove('floating');
+                    }
+                });
+            }
+        });
 
         passwordToggle.addEventListener('click', () => {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
@@ -445,43 +492,64 @@
         passwordInput.addEventListener('input', () => {
             passwordAuthStatement.classList.remove('hidden');
             const password = passwordInput.value;
-            const hasLowercase = /[a-z]/.test(password);
-            const hasUppercase = /[A-Z]/.test(password);
-            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-            const isValidLength = password.length >= 8 && password.length <= 16;
+            const requirements = {
+                'length': password.length >= 8 && password.length <= 16,
+                'lowercase': /[a-z]/.test(password),
+                'uppercase': /[A-Z]/.test(password),
+                'special': /[!@#$%^&*(),.?":{}|<>]/.test(password)
+            };
 
-            document.getElementById('length').style.color = isValidLength ? 'green' : 'red';
-            document.getElementById('lowercase').style.color = hasLowercase ? 'green' : 'red';
-            document.getElementById('uppercase').style.color = hasUppercase ? 'green' : 'red';
-            document.getElementById('special').style.color = hasSpecialChar ? 'green' : 'red';
-
-            document.getElementById('length').classList.toggle('valid', isValidLength);
-            document.getElementById('lowercase').classList.toggle('valid', hasLowercase);
-            document.getElementById('uppercase').classList.toggle('valid', hasUppercase);
-            document.getElementById('special').classList.toggle('valid', hasSpecialChar);
+            for (const key in requirements) {
+                const element = document.getElementById(key);
+                element.style.color = requirements[key] ? 'green' : 'red';
+                element.classList.toggle('valid', requirements[key]);
+            }
         });
 
+        function validateForm() {
+            const requiredFields = document.querySelectorAll('#createAccountForm [required]');
+            let isValid = true;
+        
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('invalid');
+                }
+            });
+        
+            return isValid;
+        }
+        
         createAccountForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const passwordValue = passwordInput.value;
-            const hasLowercase = /[a-z]/.test(passwordValue);
-            const hasUppercase = /[A-Z]/.test(passwordValue);
-            const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue);
-            const isValidLength = passwordValue.length >= 8 && passwordValue.length <= 16;
-
-            if (isValidLength && hasLowercase && hasUppercase && hasSpecialChar) {
+            const requirements = {
+                'length': passwordValue.length >= 8 && passwordValue.length <= 16,
+                'lowercase': /[a-z]/.test(passwordValue),
+                'uppercase': /[A-Z]/.test(passwordValue),
+                'special': /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue)
+            };
+            const requiredFields = document.querySelectorAll('input[required]');
+            let isEmpty = false;
+            
+            requiredFields.forEach(field => {
+                if (field.value.trim() === '') {
+                    field.classList.add('empty');
+                    isEmpty = true;
+                } else {
+                    field.classList.remove('empty');
+                }
+            });
+            
+            if (Object.values(requirements).every(Boolean) && !isEmpty) {
                 console.log('Account created successfully!');
                 verificationContainer.classList.remove('hidden');
                 document.querySelector('.container').classList.add('hidden');
             } else {
-                alert('Please ensure the password meets all the requirements.');
+                alert('Please ensure the password meets all the requirements and all required fields are filled in.');
             }
-        });
-
-        document.getElementById('countryCode').addEventListener('mouseover', (event) => {
-            const option = event.target;
-            const fullName = option.getAttribute('data-full-name');
-            option.title = fullName;
         });
     </script>
 </body>
