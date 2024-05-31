@@ -34,6 +34,9 @@
             display: flex;
             align-items: flex-end;
         }
+        .input-group input.invalid {
+            border-color: red;
+        }
         input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
             padding: 10px;
             border: 1px solid #ccc;
@@ -469,6 +472,8 @@
         const verificationContainer = document.getElementById('verification-container');
         const passwordAuthStatement = document.getElementById('passwordAuthStatement');
         const inputTypes = ['text', 'password', 'email', 'tel'];
+        const phoneNumberInput = document.getElementById('phoneNumber');
+        const inputFields = document.querySelectorAll('.input-group input');
 
         inputTypes.forEach(inputType => {
             const inputField = document.querySelector(`input[type="${inputType}"]`);
@@ -482,6 +487,26 @@
                     }
                 });
             }
+        });
+        phoneNumberInput.addEventListener('input', () => {
+            phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, ''); // Replace any non-numeric character with an empty string
+        });
+
+        inputFields.forEach(inputField => {
+            const placeholder = inputField.nextElementSibling;
+            inputField.addEventListener('input', () => {
+                if (inputField.value.trim() || inputField === document.activeElement) {
+                    placeholder.classList.add('floating');
+                } else {
+                    placeholder.classList.remove('floating');
+                }
+            });
+        
+            inputField.addEventListener('blur', () => {
+                if (!inputField.value.trim()) {
+                    placeholder.classList.remove('floating');
+                }
+            });
         });
 
         passwordToggle.addEventListener('click', () => {
