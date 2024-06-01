@@ -37,7 +37,10 @@
             display: flex;
             align-items: flex-end;
         }
-        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+        input[type="text"], 
+        input[type="password"], 
+        input[type="email"], 
+        input[type="tel"] {
             height: 30px;
             padding: 10px;
             border: 1px solid #999;
@@ -46,15 +49,16 @@
             font-size: 16px;
             transition: 0.1s;
         }
-        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+        input[type="text"]:focus, 
+        input[type="password"]:focus, 
+        input[type="email"]:focus, 
+        input[type="tel"]:focus {
             outline: none;
+            background-color: white;
             border-color: #563bff;
         }
         input[type="password"].invalid {
             border-color: red;
-        }
-        input[type="password"].valid {
-            border-color: green;
         }
         .placeholder {
             font-size: 16px;
@@ -102,6 +106,7 @@
         input[type="tel"]:not(:placeholder-shown) ~ .placeholder{
             left: 5px;
             padding: 0 5px;
+            background-color: white;
         }
         textarea{
             left: 15px;
@@ -546,7 +551,7 @@
                     img.src = isValid ? 'check.png' : 'close.png';
                     element.classList.toggle('valid', isValid);
                 }
-                
+
                 if (Object.values(validations).every(Boolean)) {
                     passwordInput.classList.remove('invalid');
                 } else {
