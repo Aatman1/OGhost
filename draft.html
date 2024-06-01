@@ -495,7 +495,7 @@
                 <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a>.</p>
 
             <p>Already have an account? <a href="signin.html">Sign in</a></p>
-            <button class="backButton">
+            <button id="backButton" class="backButton">
                 <img src="back-button.png" alt="">
                 <a href="signup.html"></a>
             </button>
@@ -539,8 +539,9 @@
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('email');
             const checkEmailButton = document.getElementById('checkEmailButton');
-            const additionalFields = document.getElementById('additionalFields', );
+            const additionalFields = document.getElementById('additionalFields');
             const backButton = document.getElementById('backButton');
+            const bottomHalf = document.getElementById('bottomHalf');
             const passwordInput = document.getElementById('password');
             const passwordToggle = document.querySelector('.password-toggle');
             const createAccountForm = document.getElementById('createAccountForm');
@@ -666,6 +667,13 @@
                 } else {
                     console.log('Form is invalid');
                 }
+            });
+
+            // Add event listener for backButton
+            backButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                additionalFields.classList.add('hidden');
+                bottomHalf.classList.remove('hidden');
             });
         });
     </script>
