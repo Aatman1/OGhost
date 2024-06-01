@@ -10,14 +10,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100%;
             margin: 0;
+            padding: 0;
             background-color: white;
         }
         .container {
+            width: 350px;    
             text-align: center;
             background-color: white;
-            padding: 40px;
+            padding: 40px 0;
         }
         img[alt="Logo"] {
             width: 80px;
@@ -28,41 +30,50 @@
             padding-bottom: 40px;
             margin: 0;
         }
-        .input-group {
+        .input-group{
+            height: 50px;
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: flex-end;
         }
-        .input-group input.invalid {
-            border-color: red;
-        }
-        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+        input[type="text"], 
+        input[type="password"], 
+        input[type="email"], 
+        input[type="tel"] {
+            height: 30px;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 1px solid #999;
+            border-radius: 5px;
             width: 100%;
             font-size: 16px;
-            transition: 0.1s;
+            transition: all 0.1s;
         }
-        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+        input[type="text"]:focus, 
+        input[type="password"]:focus, 
+        input[type="email"]:focus, 
+        input[type="tel"]:focus {
             outline: none;
+            background-color: white;
             border-color: #563bff;
         }
+        input[type="password"].invalid {
+            border-color: red;
+        }
         .placeholder {
+            font-size: 16px;
             position: absolute;
             left: 10px;
-            top: 10px;
+            top: 13px;
             color: #999;
             pointer-events: none;
             transition: 0.3s;
         }
         .placeholder.floating {
-            top: -8px;
+            top: -10px;
             left: 5px;
-            color: #999;
+            color: #563bff;
             font-size: 12px;
-            background-color: white;
             padding: 0 5px;
         }
      
@@ -72,32 +83,41 @@
         input[type="password"]:not(:placeholder-shown) ~ .placeholder,
         input[type="email"]:focus ~ .placeholder,
         input[type="email"]:not(:placeholder-shown) ~ .placeholder{
-            top: -8px;
+            top: -10px;
             left: 5px;
-            color: #999;
-            font-size: 12px;
+            color: #563bff;
             background-color: white;
             padding: 0 5px;
         }
-        input[type="tel"]:focus ~ .placeholder{
-            top: -8px;
-            left: 5px;
-            color: #999;
+        
+        input[type="email"]:focus ~ .placeholder,
+        input[type="password"]:focus ~ .placeholder,
+        input[type="text"]:focus ~ .placeholder{
             font-size: 12px;
+        }
+        input[type="tel"]:focus ~ .placeholder{
+            top: -10px;
+            left: 5px;
+            font-size: 12px;
+            color: #563bff;
             background-color: white;
             padding: 0 5px;
         }
         input[type="tel"]:not(:placeholder-shown) ~ .placeholder{
-            color: #999;
+            left: 5px;
             padding: 0 5px;
+            background-color: white;
+        }
+        textarea{
+            left: 15px;
         }
         .password-group {
             position: relative;
         }
         .password-toggle {
             position: absolute;
-            top: 50%;
-            right: 10px;
+            top: 16px;
+            right: 17px;
             transform: translateY(-50%);
             background: none;
             border: none;
@@ -109,14 +129,19 @@
             justify-content: center;
         }
         .password-toggle img {
-            height: 20px;
+            height: 23px;
             align-self: flex-end;
+            opacity: 65%;
+            transition: 0.2s;
+        } 
+        .password-toggle img:hover{
+            content: url('icons8-eye-96_hover.png');
+            color: #563bff;
+            opacity: 100%;
+            transition: 0.2s;
         }
-        .input-group input.invalid {
-            border-color: red; /* Change to your desired border color */
-        }              
         button {
-            padding: 10px 20px;
+            padding: 10px;
             background-color: #563bff;
             color: white;
             border-color: #563bff;
@@ -125,7 +150,7 @@
             font-size: 16px;
             width: 100%;
             transition: 0.3s;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         button:hover {
             background-color: #0010c3;
@@ -138,16 +163,18 @@
             margin-bottom: 10px;
             background-color: #fff;
             color: #333;
-            border: 1px solid #ccc;
+            border: 1px solid #999;
             transition: 0.3s;
             text-align: left; /* Align text to the left */
         }
         .alternate-options button:hover {
-            background-color: #ccc;
-            transition: 0.3;
+            border-color: #bbb;
+            background-color: #bbb;
+            transition: 0.3s;
         }
         .alternate-options button img {
-            width: 30px;
+            width: 20px;
+            padding: 0 5px 0 5px;
         }
         
         .alternate-options button .icon-text-container {
@@ -160,8 +187,8 @@
         }
         
         p {
+            font-size: 12px;
             width: 360px;
-
         }
         a {
             color: #563bff;
@@ -193,16 +220,17 @@
             margin: 0 auto;
         }
         .phone-input input[type="tel"] {
-            width: 270px;
+            width: 246px;
         }
         select {
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 1px solid #999;
+            border-radius: 5px;
             font-size: 16px;
             transition: 0.3s;
+            height: 52px;
             width: 80px;
-            margin-bottom: 20px;
+            margin-bottom: 17px;
         }
         select:focus {
             outline: none;
@@ -211,18 +239,31 @@
         .hidden {
             display: none;
         }
+        #passwordAuthStatement img {
+            height: 13px; /* Adjust the height of the images as needed */
+            vertical-align: middle; /* Align images vertically */
+            margin-right: 5px; /* Add spacing between the image and the text */
+            transition: 0.2s;
+        }
+        .passAuth {
+            color: #333;
+            border-color: #999;
+        }
         .error {
-            color: red;
+            border: 1px solid #ccc;
+            padding: 10px; /* Optional: Add some padding */
+            border-radius: 4px; /* Optional: Add rounded corners */
             font-size: 14px;
             text-align: left;
-            list-style-type: "✘  ";
+            list-style-type: " ";
             margin-bottom: 20px;
             margin-top: 0px;
+            padding-left: 10px;
+            transition: 0.2s;
         }
         .valid {
-            color: green;
-            margin-top: 7px;
-            list-style-type: "✔  "; /* Change bullet list symbol */
+            list-style-type: "  "; /* Change bullet list symbol */
+            transition: 0.2s;
         }
     </style>
 </head>
@@ -406,7 +447,7 @@
                     <option value="+263" data-full-name="Zimbabwe">ZW</option> 
             </select>
                 <div class="input-group phone-input">
-                    <input type="tel" id="phoneNumber" required aria-label="Phone Number">
+                    <input type="tel" id="phoneNumber" maxlength="11" required aria-label="Phone Number">
                     <span class="placeholder">Phone Number</span>
                 </div>
             </div>
@@ -418,15 +459,15 @@
                 <input type="password" id="password" placeholder=" " required aria-label="Password">
                 <span class="placeholder">Password</span>
                 <button type="button" class="password-toggle" style="background-color: transparent;">
-                    <img src="icons8-eye-48.png" alt="Toggle Password Visibility">
+                    <img src="icons8-eye-96.png" alt="Toggle Password Visibility">
                 </button>
             </div>
             <div class="passAuth">
                 <ul id="passwordAuthStatement" class="error hidden">
-                    <li id="length">Must be 8-16 characters long</li>
-                    <li id="lowercase">Must contain at least 1 lowercase letter</li>
-                    <li id="uppercase">Must contain at least 1 uppercase letter</li>
-                    <li id="special">Must contain at least 1 special character</li>
+                    <li id="length"><img src="close.png" alt="Status"> Must be 8-16 characters long</li>
+                    <li id="lowercase"><img src="close.png" alt="Status"> Must contain at least 1 lowercase letter</li>
+                    <li id="uppercase"><img src="close.png" alt="Status"> Must contain at least 1 uppercase letter</li>
+                    <li id="special"><img src="close.png" alt="Status"> Must contain at least 1 special character</li>
                 </ul>
             </div>
             <button type="submit">Create Account</button>
@@ -434,6 +475,8 @@
                 <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a> , 
                 <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> , and 
                 <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a>.</p>
+                
+        <p>Already have an account? <a href="signin.html">Sign in</a></p>
         </form>
         <h3><span>or</span></h3>
         <div class="alternate-options">
@@ -455,8 +498,7 @@
                     <span>Sign up with Microsoft</span>
                 </div>
             </button>
-        </div>        
-        <p>Already have an account? <a href="signin.html">Sign in</a></p>
+        </div>
     </div>
     <div id="verification-container" class="hidden">
         <h2>Enter the verification code sent to your phone</h2>
@@ -466,115 +508,91 @@
         </form>
     </div>
     <script>
-        const passwordInput = document.getElementById('password');
-        const passwordToggle = document.querySelector('.password-toggle');
-        const createAccountForm = document.getElementById('createAccountForm');
-        const verificationContainer = document.getElementById('verification-container');
-        const passwordAuthStatement = document.getElementById('passwordAuthStatement');
-        const inputTypes = ['text', 'password', 'email', 'tel'];
-        const phoneNumberInput = document.getElementById('phoneNumber');
-        const inputFields = document.querySelectorAll('.input-group input');
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.querySelector('.password-toggle');
+            const createAccountForm = document.getElementById('createAccountForm');
+            const phoneNumberInput = document.getElementById('phoneNumber');
+            const inputFields = document.querySelectorAll('.input-group input');
+            const passwordAuthStatement = document.getElementById('passwordAuthStatement');
+            const requirements = {
+                'length': document.getElementById('length'),
+                'lowercase': document.getElementById('lowercase'),
+                'uppercase': document.getElementById('uppercase'),
+                'special': document.getElementById('special')
+            };
 
-        inputTypes.forEach(inputType => {
-            const inputField = document.querySelector(`input[type="${inputType}"]`);
-            if (inputField) {
+            inputFields.forEach(inputField => {
                 inputField.addEventListener('input', () => {
                     const placeholder = inputField.nextElementSibling;
-                    if (inputField.value.trim() || inputField === document.activeElement) {
-                        placeholder.classList.add('floating');
+                    placeholder.classList.toggle('floating', inputField.value.trim() !== '');
+                });
+            });
+
+            phoneNumberInput.addEventListener('input', () => {
+                phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, '');
+            });
+
+            passwordToggle.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+            });
+
+            passwordInput.addEventListener('input', () => {
+                passwordAuthStatement.classList.remove('hidden');
+                const password = passwordInput.value;
+                const validations = {
+                    'length': password.length >= 8 && password.length <= 16,
+                    'lowercase': /[a-z]/.test(password),
+                    'uppercase': /[A-Z]/.test(password),
+                    'special': /[!@#$%^&*(),.?":{}|<>]/.test(password)
+                };
+
+                for (const [key, element] of Object.entries(requirements)) {
+                    const isValid = validations[key];
+                    const img = element.querySelector('img');
+                    img.src = isValid ? 'check.png' : 'close.png';
+                    element.classList.toggle('valid', isValid);
+                }
+
+                if (Object.values(validations).every(Boolean)) {
+                    passwordInput.classList.remove('invalid');
+                } else {
+                    passwordInput.classList.add('invalid');
+                }
+            });
+
+            createAccountForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const passwordValue = passwordInput.value;
+                const validations = {
+                    'length': passwordValue.length >= 8 && passwordValue.length <= 16,
+                    'lowercase': /[a-z]/.test(passwordValue),
+                    'uppercase': /[A-Z]/.test(passwordValue),
+                    'special': /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue)
+                };
+                const requiredFields = document.querySelectorAll('input[required]');
+                let isEmpty = false;
+
+                requiredFields.forEach(field => {
+                    if (field.value.trim() === '') {
+                        field.classList.add('invalid');
+                        isEmpty = true;
                     } else {
-                        placeholder.classList.remove('floating');
+                        field.classList.remove('invalid');
                     }
                 });
-            }
-        });
-        phoneNumberInput.addEventListener('input', () => {
-            phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, ''); // Replace any non-numeric character with an empty string
-        });
 
-        inputFields.forEach(inputField => {
-            const placeholder = inputField.nextElementSibling;
-            inputField.addEventListener('input', () => {
-                if (inputField.value.trim() || inputField === document.activeElement) {
-                    placeholder.classList.add('floating');
+                if (Object.values(validations).every(Boolean) && !isEmpty) {
+                    // Proceed with form submission (e.g., send data to server)
+                    console.log('Form is valid and ready to be submitted');
+                    // Example of showing the verification container
+                    document.getElementById('verification-container').classList.remove('hidden');
+                    createAccountForm.classList.add('hidden');
                 } else {
-                    placeholder.classList.remove('floating');
+                    console.log('Form is invalid');
                 }
             });
-        
-            inputField.addEventListener('blur', () => {
-                if (!inputField.value.trim()) {
-                    placeholder.classList.remove('floating');
-                }
-            });
-        });
-
-        passwordToggle.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-        });
-
-        passwordInput.addEventListener('input', () => {
-            passwordAuthStatement.classList.remove('hidden');
-            const password = passwordInput.value;
-            const requirements = {
-                'length': password.length >= 8 && password.length <= 16,
-                'lowercase': /[a-z]/.test(password),
-                'uppercase': /[A-Z]/.test(password),
-                'special': /[!@#$%^&*(),.?":{}|<>]/.test(password)
-            };
-
-            for (const key in requirements) {
-                const element = document.getElementById(key);
-                element.style.color = requirements[key] ? 'green' : 'red';
-                element.classList.toggle('valid', requirements[key]);
-            }
-        });
-
-        function validateForm() {
-            const requiredFields = document.querySelectorAll('#createAccountForm [required]');
-            let isValid = true;
-        
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('invalid');
-                    isValid = false;
-                } else {
-                    field.classList.remove('invalid');
-                }
-            });
-        
-            return isValid;
-        }
-        
-        createAccountForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const passwordValue = passwordInput.value;
-            const requirements = {
-                'length': passwordValue.length >= 8 && passwordValue.length <= 16,
-                'lowercase': /[a-z]/.test(passwordValue),
-                'uppercase': /[A-Z]/.test(passwordValue),
-                'special': /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue)
-            };
-            const requiredFields = document.querySelectorAll('input[required]');
-            let isEmpty = false;
-            
-            requiredFields.forEach(field => {
-                if (field.value.trim() === '') {
-                    field.classList.add('empty');
-                    isEmpty = true;
-                } else {
-                    field.classList.remove('empty');
-                }
-            });
-            
-            if (Object.values(requirements).every(Boolean) && !isEmpty) {
-                console.log('Account created successfully!');
-                verificationContainer.classList.remove('hidden');
-                document.querySelector('.container').classList.add('hidden');
-            } else {
-                alert('Please ensure the password meets all the requirements and all required fields are filled in.');
-            }
         });
     </script>
 </body>
