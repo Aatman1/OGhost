@@ -19,7 +19,7 @@
             width: 350px;    
             text-align: center;
             background-color: white;
-            padding: 40px;
+            padding: 40px 0;
         }
         img[alt="Logo"] {
             width: 80px;
@@ -30,7 +30,7 @@
             padding-bottom: 40px;
             margin: 0;
         }
-        .input-group {
+        .input-group{
             height: 50px;
             position: relative;
             margin-bottom: 15px;
@@ -50,6 +50,12 @@
             outline: none;
             border-color: #563bff;
         }
+        input[type="password"].invalid {
+            border-color: red;
+        }
+        input[type="password"].valid {
+            border-color: green;
+        }
         .placeholder {
             font-size: 16px;
             position: absolute;
@@ -63,8 +69,7 @@
             top: -10px;
             left: 5px;
             color: #563bff;
-            font-size: 12px;    
-            background-color: white;
+            font-size: 12px;
             padding: 0 5px;
         }
      
@@ -206,11 +211,11 @@
             align-items: center;
             gap: 2px;
             justify-content: center;
-            width: fit-conten   t;
+            width: fit-content;
             margin: 0 auto;
         }
         .phone-input input[type="tel"] {
-            width: 245px;
+            width: 246px;
         }
         select {
             padding: 10px;
@@ -220,7 +225,7 @@
             transition: 0.3s;
             height: 52px;
             width: 80px;
-            margin-bottom: 18px;
+            margin-bottom: 17px;
         }
         select:focus {
             outline: none;
@@ -235,10 +240,11 @@
             margin-right: 5px; /* Add spacing between the image and the text */
         }
         .passAuth {
+            color: #333;
             border-color: #999;
         }
         .error {
-            border: 1px solid #999;
+            border: 1px solid #ccc;
             padding: 10px; /* Optional: Add some padding */
             border-radius: 4px; /* Optional: Add rounded corners */
             font-size: 14px;
@@ -433,7 +439,7 @@
                     <option value="+263" data-full-name="Zimbabwe">ZW</option> 
             </select>
                 <div class="input-group phone-input">
-                    <input type="tel" id="phoneNumber" required aria-label="Phone Number">
+                    <input type="tel" id="phoneNumber" maxlength="11" required aria-label="Phone Number">
                     <span class="placeholder">Phone Number</span>
                 </div>
             </div>
@@ -461,6 +467,8 @@
                 <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a> , 
                 <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> , and 
                 <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a>.</p>
+                
+        <p>Already have an account? <a href="signin.html">Sign in</a></p>
         </form>
         <h3><span>or</span></h3>
         <div class="alternate-options">
@@ -482,8 +490,7 @@
                     <span>Sign up with Microsoft</span>
                 </div>
             </button>
-        </div>        
-        <p>Already have an account? <a href="signin.html">Sign in</a></p>
+        </div>
     </div>
     <div id="verification-container" class="hidden">
         <h2>Enter the verification code sent to your phone</h2>
@@ -538,6 +545,12 @@
                     const img = element.querySelector('img');
                     img.src = isValid ? 'check.png' : 'close.png';
                     element.classList.toggle('valid', isValid);
+                }
+                
+                if (Object.values(validations).every(Boolean)) {
+                    passwordInput.classList.remove('invalid');
+                } else {
+                    passwordInput.classList.add('invalid');
                 }
             });
 
