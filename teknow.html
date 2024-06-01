@@ -266,6 +266,13 @@
             list-style-type: "  "; /* Change bullet list symbol */
             transition: 0.2s;
         }
+        .hidden {
+            transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
+        }
+        
+        .visible {
+            transition: opacity 0.3s ease-in, max-height 0.3s ease-in;
+        }
     </style>
 </head>
 <body>
@@ -316,34 +323,39 @@
                     </ul>
                 </div>
                 <button type="submit">Create Account</button>
+
+
             <p>By creating an account, you agree to OfferGhost's 
                 <a href="https://offerghosting.com/terms-of-use/">Terms of Service</a> , 
                 <a href="https://offerghosting.com/end-user-license-agreement/">Terms of Agreement</a> , and 
                 <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a>.</p>
             </div>  
+        </form>
+        <div id="bottomHalf">
+            <button id="emailYes" type="submit">Create Account</button>
                 
             <p>Already have an account? <a href="signin.html">Sign in</a></p>
-        </form>
-        <h3><span>or</span></h3>
-        <div class="alternate-options">
-            <button type="button">
-                <div class="icon-text-container">
-                    <img src="Google_logo.png" alt="Google">
-                    <span>Sign up with Google</span>
-                </div>
-            </button>
-            <button type="button">
-                <div class="icon-text-container">
-                    <img src="LinkedIn_logo_initials.png" alt="LinkedIn">
-                    <span>Sign up with LinkedIn</span>
-                </div>
-            </button>
-            <button type="button">
-                <div class="icon-text-container">
-                    <img src="Microsoft_logo.png" alt="Microsoft">
-                    <span>Sign up with Microsoft</span>
-                </div>
-            </button>
+            <h3><span>or</span></h3>
+            <div class="alternate-options">
+                <button type="button">
+                    <div class="icon-text-container">
+                        <img src="Google_logo.png" alt="Google">
+                        <span>Sign up with Google</span>
+                    </div>
+                </button>
+                <button type="button">
+                    <div class="icon-text-container">
+                        <img src="LinkedIn_logo_initials.png" alt="LinkedIn">
+                        <span>Sign up with LinkedIn</span>
+                    </div>
+                </button>
+                <button type="button">
+                    <div class="icon-text-container">
+                        <img src="Microsoft_logo.png" alt="Microsoft">
+                        <span>Sign up with Microsoft</span>
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
     <div id="verification-container" class="hidden">
@@ -356,6 +368,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('email');
+            const checkEmailButton = document.getElementById('checkEmailButton');
             const additionalFields = document.getElementById('additionalFields');
             const passwordInput = document.getElementById('password');
             const passwordToggle = document.querySelector('.password-toggle');
@@ -370,19 +383,24 @@
                 'special': document.getElementById('special')
             };
 
-            emailInput.addEventListener('input', () => {
-                const emailValue = emailInput.value.trim();
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                const isValidEmail = emailPattern.test(emailValue);
-        
-                if (isValidEmail) {
+            
+            emailYes.addEventListener('click', checkEmailValidity);
+
+            
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function checkEmailValidity() {
+                const email = emailInput.value.trim();
+                if (isValidEmail(email)) {
                     additionalFields.classList.remove('hidden');
-                    alternate-options.classList.add('hidden');
+                    bottomHalf.classList.add('hidden');
                 } else {
                     additionalFields.classList.add('hidden');
-                    alternate-options.classList.remove('hidden');
+                    bottomHalf.classList.remove('hidden');
                 }
-            });
+            }
 
             inputFields.forEach(inputField => {
                 inputField.addEventListener('input', () => {
