@@ -213,6 +213,12 @@
             font-size: 12px;
             color: #666;
         }
+        .backButton, .backButton:hover {
+            background-color: transparent; 
+        }
+        .backButton img{
+            height: 40px;
+        }
         .phone-input-group {
             display: flex;
             align-items: center;
@@ -489,6 +495,10 @@
                 <a href="https://offerghosting.com/privacy-policy/">Privacy Policy</a>.</p>
 
             <p>Already have an account? <a href="signin.html">Sign in</a></p>
+            <button class="backButton">
+                <img src="back-button.png" alt="">
+                <a href="signup.html"></a>
+            </button>
             </div>  
         </form>
         <div id="bottomHalf">
@@ -517,7 +527,6 @@
                 </button>
             </div>
         </div>
-    <button id="back" class=""><img src="back-button.png" alt="" style="background-color: transparent; width: 30px "> <a href="signup.html"></a></button>
     </div>
     <div id="verification-container" class="hidden">
         <h2>Enter the verification code sent to your phone</h2>
@@ -530,7 +539,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('email');
             const checkEmailButton = document.getElementById('checkEmailButton');
-            const additionalFields = document.getElementById('additionalFields');
+            const additionalFields = document.getElementById('additionalFields', );
+            const backButton = document.getElementById('backButton');
             const passwordInput = document.getElementById('password');
             const passwordToggle = document.querySelector('.password-toggle');
             const createAccountForm = document.getElementById('createAccountForm');
@@ -556,6 +566,7 @@
                 const email = emailInput.value.trim();
                 if (isValidEmail(email)) {
                     additionalFields.classList.remove('hidden');
+                    //backButton.classList.remove('hidden');
                     bottomHalf.classList.add('hidden');
                 } else {
                     additionalFields.classList.add('hidden');
