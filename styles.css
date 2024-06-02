@@ -1,92 +1,118 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: auto;
-}
-
 body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: white;
 }
-
 .container {
+    width: 350px;    
     text-align: center;
     background-color: white;
-    padding: 40px;
-    max-width: 100%;
-    overflow: auto;
+    padding: 40px 0;
 }
-
 img[alt="Logo"] {
     width: 80px;
     padding: 0;
 }
-
 h2 {
     font-size: 40px;
     padding-bottom: 40px;
     margin: 0;
 }
-
-.input-group {
+.input-group{
+    height: 50px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: flex;
     align-items: flex-end;
 }
-
-.input-group input.empty {
-    border-color: red; /* Override border color for empty fields */
-}
-
-.input-group input.invalid {
-    border-color: red;
-}
-
-input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+input[type="text"], 
+input[type="password"], 
+input[type="email"], 
+input[type="tel"] {
+    height: 30px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #999;
+    border-radius: 5px;
     width: 100%;
     font-size: 16px;
-    transition: 0.1s;
+    transition: all 0.1s;
 }
-
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="tel"]:focus {
+input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="email"]:focus, 
+input[type="tel"]:focus {
     outline: none;
+    background-color: white;
     border-color: #563bff;
 }
-
+input[type="password"].invalid, 
+input[type="text"].invalid {
+    border-color: red;
+}
 .placeholder {
+    font-size: 16px;
     position: absolute;
     left: 10px;
-    top: 10px;
+    top: 13px;
     color: #999;
     pointer-events: none;
     transition: 0.3s;
 }
-
 .placeholder.floating {
-    top: -8px;
+    top: -10px;
     left: 5px;
-    color: #999;
+    color: #563bff;
     font-size: 12px;
+    padding: 0 5px;
+}
+
+input[type="text"]:focus ~ .placeholder,
+input[type="text"]:not(:placeholder-shown) ~ .placeholder,
+input[type="password"]:focus ~ .placeholder,
+input[type="password"]:not(:placeholder-shown) ~ .placeholder,
+input[type="email"]:focus ~ .placeholder,
+input[type="email"]:not(:placeholder-shown) ~ .placeholder{
+    top: -10px;
+    left: 5px;
+    font-size: 12px;  
+    color: #563bff;
     background-color: white;
     padding: 0 5px;
 }
 
+input[type="email"]:focus ~ .placeholder,
+input[type="password"]:focus ~ .placeholder,
+input[type="text"]:focus ~ .placeholder{
+    font-size: 12px;
+}
+input[type="tel"]:focus ~ .placeholder{
+    top: -10px;
+    left: 5px;
+    font-size: 12px;
+    color: #563bff;
+    background-color: white;
+    padding: 0 5px;
+}
+input[type="tel"]:not(:placeholder-shown) ~ .placeholder{
+    left: 5px;
+    padding: 0 5px;
+    background-color: white;
+}
+textarea{
+    left: 15px;
+}
 .password-group {
     position: relative;
 }
-
 .password-toggle {
     position: absolute;
-    top: 50%;
-    right: 10px;
+    top: 16px;
+    right: 17px;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -97,49 +123,54 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     align-items: center;
     justify-content: center;
 }
-
 .password-toggle img {
-    height: 20px;
+    height: 23px;
     align-self: flex-end;
+    opacity: 65%;
+    transition: 0.2s;
+} 
+.password-toggle img:hover{
+    content: url('icons8-eye-96_hover.png');
+    color: #563bff;
+    opacity: 100%;
+    transition: 0.2s;
 }
-
 button {
-    padding: 10px 20px;
-    background-color: #563bff;
+    padding: 10px;
+    background-color: #336cff;
     color: white;
-    border-color: #563bff;
+    border-color: transparent;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+    height: 50px;
     transition: 0.3s;
-    margin-top: 10px;
+    margin: 20px 0 10px;
 }
-
 button:hover {
     background-color: #0010c3;
-    border-color: #0010c3;
 }
-
 .alternate-options button {
+    height: 52px;
     display: flex;
     align-items: center;
     width: 100%;
     margin-bottom: 10px;
     background-color: #fff;
     color: #333;
-    border: 1px solid #ccc;
+    border: 1px solid #999;
     transition: 0.3s;
     text-align: left; /* Align text to the left */
 }
-
 .alternate-options button:hover {
+    border-color: #bbb;
     background-color: #ccc;
-    transition: 0.3;
+    transition: 0.3s;
 }
-
 .alternate-options button img {
-    width: 30px;
+    width: 20px;
+    padding: 0 5px 0 5px;
 }
 
 .alternate-options button .icon-text-container {
@@ -152,34 +183,37 @@ button:hover {
 }
 
 p {
+    font-size: 12px;
     width: 360px;
 }
-
 a {
     color: #563bff;
     text-decoration: none;
 }
-
 h3 {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #1538ff6e;
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #1538ff6e; 
     line-height: 0.1em;
-    margin: 30px 0 30px;
-}
-
-h3 span {
+    margin: 30px 0 30px; 
+} 
+h3 span { 
     color: #1538ff6e;
-    background: white;
-    padding: 0 10px;
+    background: white; 
+    padding: 0 10px; 
 }
-
 footer {
     margin-top: 20px;
     font-size: 12px;
     color: #666;
 }
-
+.backButton, .backButton:hover {
+    background-color: transparent; 
+    margin: 0;
+}
+.backButton img{
+    height: 50px;
+}
 .phone-input-group {
     display: flex;
     align-items: center;
@@ -188,48 +222,56 @@ footer {
     width: fit-content;
     margin: 0 auto;
 }
-
 .phone-input input[type="tel"] {
-    width: 270px;
+    width: 246px;
 }
-
 select {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #999;
+    border-radius: 5px;
     font-size: 16px;
     transition: 0.3s;
+    height: 52px;
     width: 80px;
-    margin-bottom: 20px;
+    margin-bottom: 17px;
 }
-
 select:focus {
     outline: none;
     border-color: #563bff;
 }
-
 .hidden {
     display: none;
 }
-
+#passwordAuthStatement img {
+    height: 8px; /* Adjust the height of the images as needed */
+    vertical-align: middle; /* Align images vertically */
+    margin-right: 5px; /* Add spacing between the image and the text */
+    transition: 0.2s;
+}
+.passAuth {
+    color: #575757;
+    border-color: #999;
+}
 .error {
-    color: red;
+    border: 1px solid #ccc;
+    padding: 10px; /* Optional: Add some padding */
+    border-radius: 4px; /* Optional: Add rounded corners */
     font-size: 14px;
     text-align: left;
+    list-style-type: " ";
     margin-bottom: 20px;
     margin-top: 0px;
+    padding-left: 10px;
+    transition: 0.2s;
 }
-
 .valid {
-    color: green;
+    list-style-type: "  "; /* Change bullet list symbol */
+    transition: 0.2s;
+}
+.hidden {
+    transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
 }
 
-#passwordAuthStatement img {
-    height: 16px;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
-.input-group input.invalid {
-    border-color: red;
+.visible {
+    transition: opacity 0.3s ease-in, max-height 0.3s ease-in;
 }
