@@ -12,25 +12,19 @@
         <h2>Reset Password</h2>
         <form id="resetPasswordForm">
             <div id="emailSection" class="input-group">
-                <input type="email" id="email" placeholder="" required aria-label="Email">
+                <input type="email" id="email" placeholder="" style="width: 100%;" required aria-label="Email">
                 <span class="placeholder">Email</span>
             </div>
+                <button id="requestOtpButton" type="button" class="">Request OTP</button>
             <div id="additionalFields" class="hidden">
-                <!-- Additional fields will be dynamically added here -->
-            </div>
-            <div id="otpSection" class="hidden">
                 <div class="input-group">
                     <input type="text" id="otp" placeholder="" required aria-label="OTP Code">
-                    <span class="placeholder">OTP</span>
+                    <span class="placeholder">Enter OTP</span>
                 </div>
-                <button id="verify" type="submit">Verify OTP</button>
-            </div>
-            <div id="bottomHalf">
-                <button id="resetPasswordButton" type="button">Reset Password</button>
-                <p>Remember your Password? <a href="signin.html">Sign in</a></p>
+                    <button id="verify" type="submit">Verify OTP</button>
             </div>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>
