@@ -23,22 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
     });
-
-    // signInForm.addEventListener('submit', function (event) {
-    //     event.preventDefault();
-    //     const email = document.getElementById('email').value;
-    //     const password = document.getElementById('password').value;
-
-    //     // Add your form submission logic here
-    //     if (email && password) {
-    //         console.log('Form Submitted');
-    //         // Example: Show verification container
-    //         document.getElementById('verification-container').classList.remove('hidden');
-    //         signInForm.classList.add('hidden');
-    //     } else {
-    //         console.log('Please fill in all fields');
-    //     }
-    // });
     
     emailYes.addEventListener('click', checkEmailValidity);
 
