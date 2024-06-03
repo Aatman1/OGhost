@@ -23,31 +23,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event Listeners
     emailYes.addEventListener('click', checkEmailValidity);
     CreateAcc.addEventListener('click', checkEmailValidity);
-
     passwordToggle.addEventListener('click', togglePasswordVisibility);
-
     emailInput.addEventListener('keypress', handleEmailKeyPress);
-
-    inputFields.forEach(inputField => {
-        inputField.addEventListener('input', handleInputFieldChange);
-    });
-
+    inputFields.forEach(inputField => {inputField.addEventListener('input', handleInputFieldChange);});
     phoneNumberInput.addEventListener('input', handlePhoneNumberInput);
-
     passwordInput.addEventListener('input', validatePassword);
-
     createAccountForm.addEventListener('submit', handleFormSubmission);
-
     backButton.addEventListener('click', handleBackButtonClick);
 
     // Functions
-
     // Check the validity of email input
     function checkEmailValidity() {
         const email = emailInput.value.trim();
         if (isValidEmail(email)) {
             additionalFields.classList.remove('hidden');
             bottomHalf.classList.add('hidden');
+            validateUsernameLength();
         } else {
             additionalFields.classList.add('hidden');
             bottomHalf.classList.remove('hidden');
@@ -83,6 +74,18 @@ document.addEventListener('DOMContentLoaded', function () {
         phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, '');
     }
 
+    // Validate username length
+    function validateUsernameLength() {
+        const username = emailInput.value.trim();
+        const isValid = username.length >= 3;
+        const usernameError = document.getElementById('usernameError');
+        if (isValid) {
+            usernameError.textContent = '';
+        } else {
+            usernameError.textContent = 'Username must be at least 3 characters long.';
+        }
+    }
+
     // Validate password input
     function validatePassword() {
         passwordAuthStatement.classList.remove('hidden');
@@ -105,6 +108,11 @@ document.addEventListener('DOMContentLoaded', function () {
             passwordInput.classList.remove('invalid');
         } else {
             passwordInput.classList.add('invalid');
+        }
+
+        // Only validate username length if additionalFields are not hidden
+        if (!additionalFields.classList.contains('hidden')) {
+            validateUsernameLength();
         }
     }
 
