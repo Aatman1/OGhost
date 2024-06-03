@@ -1,5 +1,6 @@
-
+// Event Listeners
 document.addEventListener('DOMContentLoaded', function () {
+    // DOM Element References
     const signInForm = document.getElementById('signInForm');
     const emailInput = document.getElementById('email');
     const checkEmailButton = document.getElementById('checkEmailButton');
@@ -19,23 +20,33 @@ document.addEventListener('DOMContentLoaded', function () {
         'special': document.getElementById('special')
     };
 
-    passwordToggle.addEventListener('click', () => {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-    });
-    
+    // Event Listeners
     emailYes.addEventListener('click', checkEmailValidity);
+    CreateAcc.addEventListener('click', checkEmailValidity);
 
-    
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+    passwordToggle.addEventListener('click', togglePasswordVisibility);
 
+    emailInput.addEventListener('keypress', handleEmailKeyPress);
+
+    inputFields.forEach(inputField => {
+        inputField.addEventListener('input', handleInputFieldChange);
+    });
+
+    phoneNumberInput.addEventListener('input', handlePhoneNumberInput);
+
+    passwordInput.addEventListener('input', validatePassword);
+
+    createAccountForm.addEventListener('submit', handleFormSubmission);
+
+    backButton.addEventListener('click', handleBackButtonClick);
+
+    // Functions
+
+    // Check the validity of email input
     function checkEmailValidity() {
         const email = emailInput.value.trim();
         if (isValidEmail(email)) {
             additionalFields.classList.remove('hidden');
-            //backButton.classList.remove('hidden');
             bottomHalf.classList.add('hidden');
         } else {
             additionalFields.classList.add('hidden');
@@ -43,45 +54,37 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Add event listener to the button
-    emailYes.addEventListener('click', checkEmailValidity);
-    CreateAcc.addEventListener('click', checkEmailValidity);
-
-    // Listen for Enter key press on the email input
-    emailInput.addEventListener('keypress', function(event) {
-        // Check if Enter key is pressed
-        if (event.key === 'Enter') {
-            if(additionalFields === 'hidden'){
-            // Prevent the default form submission behavior
-            event.preventDefault();
-            // Trigger the button click
-            emailYes.click();
-            }
-            else if(bottomHalf === 'hidden'){
-            event.preventDefault();
-            CreateAcc.click();
-            }
-        }
-    });
-    
-
-    inputFields.forEach(inputField => {
-        inputField.addEventListener('input', () => {
-            const placeholder = inputField.nextElementSibling;
-            placeholder.classList.toggle('floating', inputField.value.trim() !== '');
-        });
-    });
-
-    phoneNumberInput.addEventListener('input', () => {
-        phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, '');
-    });
-
-    passwordToggle.addEventListener('click', () => {
+    // Toggle password visibility
+    function togglePasswordVisibility() {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
-    });
+    }
 
-    passwordInput.addEventListener('input', () => {
+    // Handle key press events on email input
+    function handleEmailKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (additionalFields.classList.contains('hidden')) {
+                emailYes.click();
+            } else if (bottomHalf.classList.contains('hidden')) {
+                CreateAcc.click();
+            }
+        }
+    }
+
+    // Handle input field changes
+    function handleInputFieldChange() {
+        const placeholder = this.nextElementSibling;
+        placeholder.classList.toggle('floating', this.value.trim() !== '');
+    }
+
+    // Handle phone number input
+    function handlePhoneNumberInput() {
+        phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, '');
+    }
+
+    // Validate password input
+    function validatePassword() {
         passwordAuthStatement.classList.remove('hidden');
         const password = passwordInput.value;
         const validations = {
@@ -103,9 +106,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             passwordInput.classList.add('invalid');
         }
-    });
+    }
 
-    createAccountForm.addEventListener('submit', (event) => {
+    // Handle form submission
+    function handleFormSubmission(event) {
         event.preventDefault();
         const passwordValue = passwordInput.value;
         const validations = {
@@ -127,20 +131,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (Object.values(validations).every(Boolean) && !isEmpty) {
-            // Proceed with form submission (e.g., send data to server)
             console.log('Form is valid and ready to be submitted');
-            // Example of showing the verification container
             document.getElementById('verification-container').classList.remove('hidden');
             createAccountForm.classList.add('hidden');
         } else {
             console.log('Form is invalid');
         }
-    });
+    }
 
-    // Add event listener for backButton
-    backButton.addEventListener('click', function(event) {
+    // Handle back button click
+    function handleBackButtonClick(event) {
         event.preventDefault();
         additionalFields.classList.add('hidden');
         bottomHalf.classList.remove('hidden');
-    });
+    }
+
+    // Check if email is valid
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
 });
