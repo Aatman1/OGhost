@@ -3,32 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Reset Password</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <img src="OG_logo.svg" alt="Logo" style="width: 100px;">
         <h2>Reset Password</h2>
         <form id="resetPasswordForm">
-            <div id="emailSection" class="input-group">
-                <input type="email" id="email" placeholder="" required aria-label="Email">
-                <span class="placeholder">Email</span>
+            <div id="emailSection" class=" ">
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="" required aria-label="Email">
+                    <span class="placeholder">Email</span>
+                </div>
+                <button type="button" id="resetPasswordButton" class=" ">Reset Password</button>
             </div>
-            <div id="additionalFields" class="hidden">
-                <!-- Additional fields will be dynamically added here -->
-            </div>
+            
             <div id="otpSection" class="hidden">
                 <div class="input-group">
                     <input type="text" id="otp" placeholder="" required aria-label="OTP Code">
                     <span class="placeholder">OTP</span>
                 </div>
-                <button id="verify" type="submit">Verify OTP</button>
+                <button type="submit">Verify OTP</button>
             </div>
-            <div id="bottomHalf">
-                <button id="resetPasswordButton" type="button">Reset Password</button>
-                <p>Remember your Password? <a href="signin.html">Sign in</a></p>
-            </div>
+            <p>Remember your password? <a href="signin.html">Sign in</a></p>
         </form>
     </div>
     <script src="script.js"></script>

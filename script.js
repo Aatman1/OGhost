@@ -1,4 +1,3 @@
-// Event Listeners
 document.addEventListener('DOMContentLoaded', function () {
     // DOM Element References
     const signInForm = document.getElementById('signInForm');
@@ -20,24 +19,36 @@ document.addEventListener('DOMContentLoaded', function () {
         'special': document.getElementById('special')
     };
 
-    // Event Listeners
-    emailYes.addEventListener('click', checkEmailValidity);
-    CreateAcc.addEventListener('click', checkEmailValidity);
+    const resetPasswordButton = document.getElementById('resetPasswordButton');
+    const otpSection = document.getElementById('otpSection');
+    const emailSection = document.getElementById('emailSection')
+    const resetPasswordForm = document.getElementById('resetPasswordForm');
+    const verifyButton = document.getElementById('verify');
+
+    resetPasswordButton.addEventListener('click', requestOtp);
+    verifyButton.addEventListener('click', verifyOtp);
+    emailInput.addEventListener('input', handleEmailInput);
+    checkEmailButton.addEventListener('click', checkEmailValidity);
+    backButton.addEventListener('click', handleBackButtonClick);
     passwordToggle.addEventListener('click', togglePasswordVisibility);
     emailInput.addEventListener('keypress', handleEmailKeyPress);
-    inputFields.forEach(inputField => {inputField.addEventListener('input', handleInputFieldChange);});
+    inputFields.forEach(inputField => {
+        inputField.addEventListener('input', handleInputFieldChange);
+    });
     phoneNumberInput.addEventListener('input', handlePhoneNumberInput);
-    passwordInput.addEventListener('input', validatePassword);
     createAccountForm.addEventListener('submit', handleFormSubmission);
-    backButton.addEventListener('click', handleBackButtonClick);
+    resetPasswordButton.addEventListener('click', requestOtp);
+    resetPasswordForm.addEventListener('submit', verifyOtp);
 
     // Functions
-    // Check the validity of email input
     function checkEmailValidity() {
         const email = emailInput.value.trim();
         if (isValidEmail(email)) {
             additionalFields.classList.remove('hidden');
             bottomHalf.classList.add('hidden');
+            resetPasswordButton.classList.add('hidden');
+            otpSection.classList.remove('hidden');
+
             validateUsernameLength();
         } else {
             additionalFields.classList.add('hidden');
@@ -45,36 +56,31 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Toggle password visibility
     function togglePasswordVisibility() {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
     }
 
-    // Handle key press events on email input
     function handleEmailKeyPress(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
             if (additionalFields.classList.contains('hidden')) {
-                emailYes.click();
+                checkEmailButton.click();
             } else if (bottomHalf.classList.contains('hidden')) {
-                CreateAcc.click();
+                CreateAcc.click(); // Assuming CreateAcc is defined elsewhere
             }
         }
     }
 
-    // Handle input field changes
     function handleInputFieldChange() {
         const placeholder = this.nextElementSibling;
         placeholder.classList.toggle('floating', this.value.trim() !== '');
     }
 
-    // Handle phone number input
     function handlePhoneNumberInput() {
         phoneNumberInput.value = phoneNumberInput.value.replace(/\D/g, '');
     }
 
-    // Validate username length
     function validateUsernameLength() {
         const username = emailInput.value.trim();
         const isValid = username.length >= 3;
@@ -86,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Validate password input
     function validatePassword() {
         passwordAuthStatement.classList.remove('hidden');
         const password = passwordInput.value;
@@ -110,13 +115,11 @@ document.addEventListener('DOMContentLoaded', function () {
             passwordInput.classList.add('invalid');
         }
 
-        // Only validate username length if additionalFields are not hidden
         if (!additionalFields.classList.contains('hidden')) {
             validateUsernameLength();
         }
     }
 
-    // Handle form submission
     function handleFormSubmission(event) {
         event.preventDefault();
         const passwordValue = passwordInput.value;
@@ -147,15 +150,48 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Handle back button click
     function handleBackButtonClick(event) {
         event.preventDefault();
         additionalFields.classList.add('hidden');
         bottomHalf.classList.remove('hidden');
     }
 
-    // Check if email is valid
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function requestOtp() {
+        const email = emailInput.value.trim();
+        // Code to send OTP request to the server
+        // ...
+
+        additionalFields.classList.remove('hidden');
+        otpSection.classList.remove('hidden');
+    }
+    
+    function requestOtp() {
+        // Your logic for requesting OTP goes here
+        // For now, let's just show the additional fields and OTP section
+        if (additionalFields && otpSection) {
+            additionalFields.classList.remove('hidden');
+            otpSection.classList.remove('hidden');
+        } else {
+            console.error('One or more elements not found');
+        }
+    }
+
+    function verifyOtp(event) {
+        event.preventDefault();
+        // Your logic for verifying OTP goes here
+    }
+
+    function handleEmailInput() {
+        // Hide additional fields and OTP section when email changes
+        if (additionalFields && otpSection) {
+            additionalFields.classList.add('hidden');
+            otpSection.classList.add('hidden');
+        } else {
+            console.error('One or more elements not found');
+        }
     }
 });

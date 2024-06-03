@@ -130,7 +130,7 @@ textarea{
     transition: 0.2s;
 } 
 .password-toggle img:hover{
-    content: url('icons8-eye-96_hover.png');
+    content: url('view.png');
     color: #563bff;
     opacity: 100%;
     transition: 0.2s;
