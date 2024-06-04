@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
             additionalFields.classList.add('hidden');
             bottomHalf.classList.remove('hidden');
         }
-        
     }
 
     function togglePasswordVisibility() {
