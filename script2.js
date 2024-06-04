@@ -24,4 +24,39 @@ $(document).bind('click', function(e) {
 
 
     $(".dropdown img.flag").toggleClass("flagvisibility");
+  countries.forEach((country, index) => {
+      const option = document.createElement('option');
+      option.value = country.code;
+      option.text = country.label;
+      select.appendChild(option);
+
+      const optionDiv = document.createElement('div');
+      optionDiv.classList.add('option-box');
+      optionDiv.innerHTML = `
+          <img
+              loading="lazy"
+              width="30"
+              src="https://flagcdn.com/w20/${country.code.toLowerCase()}.png"
+              srcset="https://flagcdn.com/w40/${country.code.toLowerCase()}.png 2x"
+              alt="${country.label} flag"
+          />
+          &nbsp;&nbsp;${country.label}
+      `;
+      optionDiv.addEventListener('click', function() {
+          select.value = country.code;
+          selectedCountry.value = country.code;
+          select.dispatchEvent(new Event('change'));
+          selectItems.classList.add('select-hide');
+      });
+      selectItems.appendChild(optionDiv);
+  });
+
+  select.addEventListener('change', function() {
+      selectedCountry.value = select.value;
+  });
+
+  select.addEventListener('click', function(e) {
+      e.stopPropagation();
+      selectItems.classList.toggle('select-hide');
+  });
 
