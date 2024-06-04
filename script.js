@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('otpSection:', otpSection);
 
     // Event Listeners
-    resetPasswordButton.addEventListener('click', handleResetPasswordClick);
-    resetPasswordForm.addEventListener('submit', handleOTPSubmit);
+    emailInput.addEventListener('keypress', handleEmailKeyPress);
     checkEmailButton.addEventListener('click', checkEmailValidity);
     backButton.addEventListener('click', handleBackButtonClick);
     passwordToggle.addEventListener('click', togglePasswordVisibility);
-    emailInput.addEventListener('keypress', handleEmailKeyPress);
     inputFields.forEach(inputField => {
         inputField.addEventListener('input', handleInputFieldChange);
     });
+    resetPasswordButton.addEventListener('click', handleResetPasswordClick);
+    resetPasswordForm.addEventListener('submit', handleOTPSubmit);
     phoneNumberInput.addEventListener('input', handlePhoneNumberInput);
     createAccountForm.addEventListener('submit', handleFormSubmission);
     resetPasswordButton.addEventListener('click', requestOtp);
@@ -90,10 +90,9 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             if (additionalFields.classList.contains('hidden')) {
                 checkEmailButton.click();
-
             } else if (bottomHalf.classList.contains('hidden')) {
                 createAccountForm.submit();
-            }
+            }   
             else if(otpSection.classList.contains('hidden')) {
                 resetPasswordButton.click();
             }
