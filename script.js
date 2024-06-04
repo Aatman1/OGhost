@@ -88,12 +88,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleEmailKeyPress(event) {
         if (event.key === 'Enter') {
             event.preventDefault();
+            console.log('Enter key pressed');
+            console.log('additionalFields hidden:', additionalFields.classList.contains('hidden'));
+            console.log('bottomHalf hidden:', bottomHalf.classList.contains('hidden'));
+            console.log('otpSection hidden:', otpSection.classList.contains('hidden'));
     
-            if (!additionalFields.classList.contains('hidden')) {
-                // If additional fields are visible, submit the create account form
+            if (additionalFields.classList.contains('hidden')) {
+                console.log('Clicking checkEmailButton');
+                checkEmailButton.click();
+            } else if (bottomHalf.classList.contains('hidden')) {
+                console.log('Submitting createAccountForm');
                 createAccountForm.submit();
-            } else if (!otpSection.classList.contains('hidden')) {
-                // If OTP section is visible, handle OTP submission
+            } else if (otpSection.classList.contains('hidden')) {
+                console.log('Clicking resetPasswordButton');
                 resetPasswordButton.click();
             }
         }
