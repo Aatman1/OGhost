@@ -11,20 +11,20 @@
         <img src="OG_logo.svg" alt="Logo" style="width: 100px;">
         <h2>Reset Password</h2>
         <form id="resetPasswordForm">
-            <div id="emailSection" class=" ">
+            <div id="emailSection">
                 <div class="input-group">
                     <input type="email" id="email" placeholder="" required aria-label="Email">
                     <span class="placeholder">Email</span>
                 </div>
-                <button type="button" id="resetPasswordButton" class=" ">Reset Password</button>
+                <button type="button" id="resetPasswordButton">Reset Password</button>
             </div>
             
             <div id="otpSection" class="hidden">
                 <div class="input-group">
                     <input type="text" id="otp" placeholder="" required aria-label="OTP Code">
-                    <span class="placeholder">OTP</span>
+                    <span class="placeholder">Enter OTP</span>
                 </div>
-                <button type="submit">Verify OTP</button>
+                <button type="button" id="verify">Verify OTP</button>
             </div>
             <p>Remember your password? <a href="signin.html">Sign in</a></p>
         </form>

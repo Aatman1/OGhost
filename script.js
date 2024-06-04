@@ -18,16 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
         'uppercase': document.getElementById('uppercase'),
         'special': document.getElementById('special')
     };
-
     const resetPasswordButton = document.getElementById('resetPasswordButton');
     const otpSection = document.getElementById('otpSection');
-    const emailSection = document.getElementById('emailSection')
+    const emailSection = document.getElementById('emailSection');
     const resetPasswordForm = document.getElementById('resetPasswordForm');
     const verifyButton = document.getElementById('verify');
 
-    resetPasswordButton.addEventListener('click', requestOtp);
-    verifyButton.addEventListener('click', verifyOtp);
-    emailInput.addEventListener('input', handleEmailInput);
+    // Debug logs
+    console.log('emailSection:', emailSection);
+    console.log('otpSection:', otpSection);
+
+    // Event Listeners
+    resetPasswordButton.addEventListener('click', handleResetPasswordClick);
+    resetPasswordForm.addEventListener('submit', handleOTPSubmit);
     checkEmailButton.addEventListener('click', checkEmailValidity);
     backButton.addEventListener('click', handleBackButtonClick);
     passwordToggle.addEventListener('click', togglePasswordVisibility);
@@ -38,9 +41,31 @@ document.addEventListener('DOMContentLoaded', function () {
     phoneNumberInput.addEventListener('input', handlePhoneNumberInput);
     createAccountForm.addEventListener('submit', handleFormSubmission);
     resetPasswordButton.addEventListener('click', requestOtp);
-    resetPasswordForm.addEventListener('submit', verifyOtp);
 
-    // Functions
+    // Function Definitions
+    function handleResetPasswordClick() {
+        const email = emailInput.value.trim();
+
+        if (isValidEmail(email)) {
+            console.log('Email submitted:', email);
+            emailSection.classList.add('hidden');
+            otpSection.classList.remove('hidden');
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    }
+
+    function handleOTPSubmit(event) {
+        event.preventDefault();
+        const otp = document.getElementById('otp').value.trim();
+        console.log('OTP submitted:', otp);
+    }
+
+    function isValidEmail(email) {
+        const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        return pattern.test(email);
+    }
+
     function checkEmailValidity() {
         const email = emailInput.value.trim();
         if (isValidEmail(email)) {
@@ -48,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
             bottomHalf.classList.add('hidden');
             resetPasswordButton.classList.add('hidden');
             otpSection.classList.remove('hidden');
-
             validateUsernameLength();
         } else {
             additionalFields.classList.add('hidden');
@@ -66,8 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             if (additionalFields.classList.contains('hidden')) {
                 checkEmailButton.click();
+
             } else if (bottomHalf.classList.contains('hidden')) {
-                CreateAcc.click(); // Assuming CreateAcc is defined elsewhere
+                createAccountForm.submit();
+            }
+            else if(otpSection.classList.contains('hidden')) {
+                resetPasswordButton.click();
             }
         }
     }
@@ -109,11 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
             element.classList.toggle('valid', isValid);
         }
 
-        if (Object.values(validations).every(Boolean)) {
-            passwordInput.classList.remove('invalid');
-        } else {
-            passwordInput.classList.add('invalid');
-        }
+        passwordInput.classList.toggle('invalid', !Object.values(validations).every(Boolean));
 
         if (!additionalFields.classList.contains('hidden')) {
             validateUsernameLength();
@@ -156,42 +180,10 @@ document.addEventListener('DOMContentLoaded', function () {
         bottomHalf.classList.remove('hidden');
     }
 
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
     function requestOtp() {
         const email = emailInput.value.trim();
         // Code to send OTP request to the server
-        // ...
-
         additionalFields.classList.remove('hidden');
         otpSection.classList.remove('hidden');
-    }
-    
-    function requestOtp() {
-        // Your logic for requesting OTP goes here
-        // For now, let's just show the additional fields and OTP section
-        if (additionalFields && otpSection) {
-            additionalFields.classList.remove('hidden');
-            otpSection.classList.remove('hidden');
-        } else {
-            console.error('One or more elements not found');
-        }
-    }
-
-    function verifyOtp(event) {
-        event.preventDefault();
-        // Your logic for verifying OTP goes here
-    }
-
-    function handleEmailInput() {
-        // Hide additional fields and OTP section when email changes
-        if (additionalFields && otpSection) {
-            additionalFields.classList.add('hidden');
-            otpSection.classList.add('hidden');
-        } else {
-            console.error('One or more elements not found');
-        }
     }
 });
