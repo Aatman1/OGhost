@@ -130,7 +130,7 @@ textarea{
   transition: 0.2s;
 } 
 .password-toggle img:hover{
-  content: url('icons8-eye-96_hover.png');
+  content: url('view.png');
   color: #563bff;
   opacity: 100%;
   transition: 0.2s;
@@ -202,18 +202,6 @@ h3 span {
   background: white; 
   padding: 0 10px; 
 }
-footer {
-  margin-top: 20px;
-  font-size: 12px;
-  color: #666;
-}
-.backButton, .backButton:hover {
-  background-color: transparent; 
-  margin: 0;
-}
-.backButton img{
-  height: 50px;
-}
 .phone-input-group {
   display: flex;
   align-items: center;
@@ -241,32 +229,6 @@ select:focus {
 }
 .hidden {
   display: none;
-}
-#passwordAuthStatement img {
-  height: 8px; /* Adjust the height of the images as needed */
-  vertical-align: middle; /* Align images vertically */
-  margin-right: 5px; /* Add spacing between the image and the text */
-  transition: 0.2s;
-}
-.passAuth {
-  color: #575757;
-  border-color: #999;
-}
-.error {
-  border: 1px solid #ccc;
-  padding: 10px; /* Optional: Add some padding */
-  border-radius: 4px; /* Optional: Add rounded corners */
-  font-size: 14px;
-  text-align: left;
-  list-style-type: " ";
-  margin-bottom: 20px;
-  margin-top: 0px;
-  padding-left: 10px;
-  transition: 0.2s;
-}
-.valid {
-  list-style-type: "  "; /* Change bullet list symbol */
-  transition: 0.2s;
 }
 .hidden {
   transition: opacity 0.3s ease-out, max-height 0.3s ease-out;
